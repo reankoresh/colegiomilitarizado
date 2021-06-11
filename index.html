@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Colegio Militarizado</title>
+    <!-- Fav icon -->
+    <link rel="icon" href="img/logonavBco.svg" type="image/x-icon" width="16"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">    <!-- Google Fonts Oswald-->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <!-- CSS only -->
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Animate CSS-->
+    <link rel="stylesheet" href="css/animate.css"/>
+    <script src="js/wow.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="col-md-3">
+                    <div class="d-flex align-items-center">
+                        <a class="brand d-flex align-items-center" href="#" data-open="modal1">
+                            <img src="img/menu.svg" alt="" height="30">
+                        </a>
+                        <a class="brand d-flex align-items-center ml-3" href="index.html">
+                            <img src="img/logonavBco.svg" alt="" height="30">
+                        </a>
+                        <a class="nav-link active cm text-primary" aria-current="page" href="index.html">COLEGIO MILITARIZADO</a>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navfontsize">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">INICIO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="oferta.html">OFERTA EDUCATIVA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admisiones.html">ADMISIONES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mision.html">MISIÓN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="vision.html">VISIÓN</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                TRANSPARENCIA
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="https://buscador.plataformadetransparencia.org.mx/en/buscadornacional?buscador=colegio%20de%20bachilleres%20militarizado&coleccion=5">
+                                        NACIONAL | SIPOT
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="https://transparencia.nl.gob.mx/site/consulta?fi=MjAxNy0xLTE=&ff=MjAyMS0xLTI4&dep=Q0JN">
+                                        ESTATAL | SIET
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <ul class="navbar-nav">
+                                <!-- Dropdown -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="img/key.svg" alt="">
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li>
+                                            <a class="dropdown-item" href="https://colegiomilitarizado.territorio.la/">
+                                                TERRITORIO | ALUMNOS
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 d-flex align-items-center justify-content-center">
+                            <a href="#" data-open="modal1">
+                                <img src="img/search.svg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--Carousel-->
+    <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner position-relative sliderContainer">
+            <div class="carousel-item active">
+                <img src="img/col1.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <img src="img/logGris.svg" alt="" width="300">
+                  <h1 class="display-1 text-primary admin animate__animated animate__flipInY">ADMISIONES 2021</h1>
+                </div>                
+            </div>
+            <div class="carousel-item">
+                <img src="img/col2.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <img src="img/logGris.svg" alt="" width="300">
+                  <h1 class="display-1 text-primary animate__animated animate__flipInY">INSCRÍBETE</h1>
+                </div>                
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    
+    <!-- Modal 1-->
+    <div class="modal" id="modal1">
+
+        <div class="container-fluid">
+
+            <div class="row fixed-top mt-2">
+
+                <div class="col-md-1">
+                    <a href="#" onclick="remove()">
+                        <img src="img/close.svg" alt="" width="50">
+                    </a>
+                </div>
+
+                <div class="col-md-9"></div>
+
+                <div class="col-md-1">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="img/keyW.svg" alt="" width="25">
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="https://colegiomilitarizado.territorio.la/">
+                                        TERRITORIO | ALUMNOS
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-1 d-flex align-items-center">
+                    <a href="#">
+                        <img src="img/searchW.svg" alt="" width="40">
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+                    <div class="container-fluid d-flex flex-column align-items-center justify-content-center invisible mod1">
+                        <a href="#" onclick="remMod1()"><img src="img/menuW.svg" alt="" height="250"></a>
+                        <h6 class="text-white">Menú</h6>
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-flex align-items-center flex-column justify-content-center">
+
+                    <div class="container-fluid d-flex align-items-center flex-column justify-content-center shadow-mid rem2">
+                        <a href="oferta.html" class="text-white text-decoration-none">Oferta Educativa</a>
+                        <a href="admisiones.html" class="text-white text-decoration-none">Admisiones</a>
+                        <a href="mision.html" class="text-white text-decoration-none">Misión</a>
+                        <a href="vision.html" class="text-white text-decoration-none">Visión</a>
+                        <a href="aviso.html" class="text-white text-decoration-none">Aviso</a>
+                    </div>
+
+                    <div class="input-group white-text d-none mod2">
+                        <div class="input-group d-flex justify-content-center">
+                            <div class="form-outline form-white">
+                                <input type="search" placeholder="Buscar" id="form1" class="form-control" />
+                            </div>
+                            <button type="button" class="btn btn-light">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+
+                    <div class="container-fluid d-flex flex-column align-items-center justify-content-center rem3">
+                        <a href="#" onclick="remMod2"><img src="img/searchW.svg" alt="" height="250"></a>
+                        <h6 class="text-white">Buscar</h6>
+                    </div>
+
+                    <div class="container-fluid d-flex flex-column align-items-center justify-content-center d-none mod3">
+                        <a href="#" class="text-decoration-none">
+                            <h4 class="text-white">Busquedas frecuentes</h4>
+                        </a>
+                        <a href="#" class="text-decoration-none">
+                            <h6 class="text-white">Plataforma</h6>
+                        </a>
+                        <a href="admisiones.html" class="text-decoration-none">
+                            <h6 class="text-white">Admisiones 2021</h6>
+                        </a>
+                        <a href="mision.html" class="text-decoration-none">
+                            <h6 class="text-white">Misión</h6>
+                        </a>
+                        <a href="vision.html" class="text-decoration-none">
+                            <h6 class="text-white">Visión</h6>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+    
+        </div>
+
+    </div>
+    <section class="sct1 d-flex align-items-center">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12 d-flex flex-column justify-content-center align-items-cente pt-5 pb-5 wow animate__animated animate__fadeInUp">
+                    <h5>Debido a la contingencia por el COVID-19, el período escolar Febrero-Agosto 2021 se realiza en línea.</h5>
+                    <p>Cursa de manera gratuita tu bachillerato en uno de los 10 planteles que forman parte de este sistema educativo, el cual fomenta la excelencia mediante la evaluación y la práctica de una cultura de calidad, instrucción militarizada e implementación de estrategias para el incremento del aprovechamiento de los alumnos.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="parallax1 d-flex justify-content-center align-items-center text-white fs-q">
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 d-flex flex-column wow animate__animated animate__fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
+                <img class="quoteImg align-self-start" src="img/quoteGris.svg" alt="">
+                <h3>Aquí se cultiva el intelecto se inculcan valores y se fortalece el cuerpo, pero principalmente se templa
+                    el espíritu para servir a la patria.”</h3>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </section>
+
+    <section class="sct2 bg-gray d-flex align-items-center justify-content-center">
+
+        <div class="container">
+
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="col-md-3 nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Caracteristicas</button>
+                    <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Materias</button>
+                    <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Requisitos</button>
+                    <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Planteles</button>
+                </div>
+                <div class="col-md-8 tab-content d-flex align-items-center" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <ul>
+                            <li>Los alumnos disponen de todos los servicios educativos de forma gratuita.</li>
+                            <li>Recibirán sus uniformes</li>
+                            <li>Tres primeros lugares tendrán acceso directo sin examen cultural a los planteles militares.</li>
+                            <li>Los varones cumplirán con el Servicio Nacional Militar, cubriendo los requisitos</li>
+                            <li>Se dispone de profesores altamente calificados e instructores militares profesionales.</li>
+                            <li>Las actividades están regidas por una normatividad que garantiza la disciplina.</li>
+                            <li>El aprendizaje, ejercicio cotidiano, valores éticos y nacionalistas son una constante.</li>
+                            <li>
+                                Egresan certificados como técnicos en logística promotor deportivo y asistente contable de almacén.
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <table class="table-responsive-sm table-bordered fs-7">
+                            <thead>
+                                <tr>
+                                    <th scope="col" colspan="2" class="text-center">Primeto</th>
+                                    <th scope="col" colspan="2" class="text-center">Segundo</th>
+                                    <th scope="col" colspan="2" class="text-center">Tercero</th>
+                                    <th scope="col" colspan="2" class="text-center">Cuarto</th>
+                                    <th scope="col" colspan="2" class="text-center">Quinto</th>
+                                    <th scope="col" colspan="2" class="text-center">Sexto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-center pl-1 pr-1">Matemáticas I</td>
+                                    <td colspan="2" class="text-center pl-1 pr-1">Matemáticas II</td>
+                                    <td colspan="2" class="text-center pl-1 pr-1">Matemáticas III</td>
+                                    <td colspan="2" class="text-center pl-1 pr-1">Matemáticas IV</td>
+                                    <td colspan="2" class="text-center pl-1 pr-1">Probabilidad y Estadística</td>
+                                    <td colspan="2" class="text-center">Filosofía</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">Química I</td>
+                                    <td colspan="2" class="text-center">Química II</td>
+                                    <td colspan="2" class="text-center">Biología I</td>
+                                    <td colspan="2" class="text-center">Biología II</td>
+                                    <td colspan="2" class="text-center">Geografía</td>
+                                    <td colspan="2" class="text-center pl-1 pr-1">Ecología y Medio Ambiente</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">Ética I</td>
+                                    <td colspan="2" class="text-center">Ética II</td>
+                                    <td colspan="2" class="text-center">Física I</td>
+                                    <td colspan="2" class="text-center">Física II</td>
+                                    <td colspan="2" class="text-center">Estructura S.de México</td>
+                                    <td colspan="2" class="text-center">Historia Universal</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">Met. de la Inv.</td>
+                                    <td colspan="2" class="text-center">Int. a las C.S.</td>
+                                    <td colspan="2" class="text-center">H. de México I</td>
+                                    <td colspan="2" class="text-center">H. de México II</td>
+                                    <td colspan="2" class="text-center">Administración I</td>
+                                    <td colspan="2" class="text-center">Administración II</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">T.L.T. I</td>
+                                    <td colspan="2" class="text-center">T.L.T. II</td>
+                                    <td colspan="2" class="text-center">literatura II</td>
+                                    <td colspan="2" class="text-center">literatura I</td>
+                                    <td colspan="2" class="text-center">M. Financieras I</td>
+                                    <td colspan="2" class="text-center">M. Financieras II</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">Inglés I</td>
+                                    <td colspan="2" class="text-center">Inglés II</td>
+                                    <td colspan="2" class="text-center">Inglés III</td>
+                                    <td colspan="2" class="text-center">Inglés IV</td>
+                                    <td colspan="2" class="text-center">Economía</td>
+                                    <td colspan="2" class="text-center">Proyecto Emprendedor</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">Informática I</td>
+                                    <td colspan="2" class="text-center">Informática II</td>
+                                    <td colspan="2" class="text-center pl-1 pr-1">Fundamentos de logística</td>
+                                    <td colspan="2" class="text-center">Costos C.S.</td>
+                                    <td colspan="2" class="text-center">Contabilidad</td>
+                                    <td colspan="2" class="text-center">C.Op.Comerciales</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center pl-1 pr-1">Educación Física I</td>
+                                    <td colspan="2" class="text-center pl-1 pr-1">Educación Física II</td>
+                                    <td colspan="2" class="text-center">Gestión C.S.</td>
+                                    <td colspan="2" class="text-center">T. Aduanera</td>
+                                    <td colspan="2" class="text-center">Mercadotecnia</td>
+                                    <td colspan="2" class="text-center">Int. al trabajo</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">I.Orden Cerrado I</td>
+                                    <td colspan="2" class="text-center">I. Orden Cerrado II</td>
+                                    <td colspan="2" class="text-center">Ed.Física III</td>
+                                    <td colspan="2" class="text-center">Ed. Física IV</td>
+                                    <td colspan="2" class="text-center">Practicas Profesionales</td>
+                                    <td colspan="2" class="text-center">Admon. S.C.</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">Civismo I</td>
+                                    <td colspan="2" class="text-center">Civismo II</td>
+                                    <td colspan="2" class="text-center">I. Orden Cerrado III</td>
+                                    <td colspan="2" class="text-center pl-1 pr-1">I. Orden Cerrado IV</td>
+                                    <td colspan="2" class="text-center">Logísticas de T.</td>
+                                    <td colspan="2" class="text-center">Control de Inv.</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">Liderazgo I</td>
+                                    <td colspan="2" class="text-center">Liderazgo II</td>
+                                    <td colspan="2" class="text-center">F. Axiológica I</td>
+                                    <td colspan="2" class="text-center">F. Axiológica II</td>
+                                    <td colspan="2" class="text-center">Admón. de Alm.</td>
+                                    <td colspan="2" class="text-center">P. de Log. Inve.</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">L. Militar I</td>
+                                    <td colspan="2" class="text-center">L. Militar II</td>
+                                    <td colspan="2" class="text-center">Liderazgo III</td>
+                                    <td colspan="2" class="text-center">Liderazgo IV</td>
+                                    <td colspan="2" class="text-center">E. Física V</td>
+                                    <td colspan="2" class="text-center">E. Física VI</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center">I. Orden Cerrado V</td>
+                                    <td colspan="2" class="text-center">I. Orden Cerrado VI</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center">T.S.P.A</td>
+                                    <td colspan="2" class="text-center">Desp. Individuales</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center invisible">-----------</td>
+                                    <td colspan="2" class="text-center ">Historia Militar</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <ul>
+                            <li>CURP del estudiante</li>
+                            <li>CURP del padre o tutor</li>
+                            <li>Certificado de secundaria o constancia de estudios</li>
+                            <li>Comprobante de domicilio</li>
+                            <li>NSS del estudiante</li>
+                            <li>4 fotografías tamaño infantil</li>
+                        </ul>
+                    </div>
+                    <div class=" container-fluid tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <div class="row">
+                            <h5 class="mb-3">División Bachillerato</h5>
+                            <div class="col-md-4">
+                                <ul class="no-bullets">
+                                    <li><span class="badge badge-pill bg-primary rounded-circle mr-2">1</span>
+                                        San Bernabé
+                                    </li>
+                                    <li>
+                                        <span class="badge badge-pill bg-primary rounded-circle mr-2">2</span>
+                                        San Nicolás
+                                    </li>
+                                    <li>
+                                        <span class="badge badge-pill bg-primary rounded-circle mr-2">3</span>
+                                        Montemorelos
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div class="col-md-4">
+                                <ul class="no-bullets">
+                                    <li>
+                                        <span class="badge badge-pill bg-primary rounded-circle mr-2">4</span>
+                                        García
+                                    </li>
+                                    <li>
+                                        <span class="badge badge-pill bg-primary rounded-circle mr-2">5</span>
+                                        Escobedo
+                                    </li>
+                                    <li>
+                                        <span class="badge badge-pill bg-primary rounded-circle mr-2">6</span>
+                                        Juárez
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div class="col-md-4">
+                                <ul class="no-bullets">
+                                    <li>
+                                        <span class="badge badge-pill bg-primary rounded-circle mr-2">7</span>
+                                        Pesquería
+                                    </li>
+                                    <li>
+                                        <span class="badge badge-pill bg-primary rounded-circle mr-2">8</span>
+                                        Linares
+                                    </li>
+                                    <li>
+                                        <span class="badge badge-pill bg-primary rounded-circle mr-2">9</span>
+                                        Galeana
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h5 class="mt-3 mb-3">División Estudios Superiores</h5>
+                            <div class="col-md-12">
+                                <ul class="no-bullets">
+                                    <li>
+                                        <span class="badge badge-pill bg-primary rounded-circle mr-2">E</span>
+                                        Unidad de Estudios Superiores
+                                    </li>
+                                    <li>
+                                        <span class="badge badge-pill bg-primary rounded-circle mr-2">A</span> Agrupamiento de Alianza Real
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/ColegioMilitarizadoNL/" role="button">
+                    <i class="fab fa-facebook-f text-white"></i>
+                </a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/nuevoleon" role="button">
+                    <i class="fab fa-twitter text-white"></i>
+                </a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.google.com.mx/search?sxsrf=ALeKk01HA_0Y0R1Ow5XimUod7GHGts33DQ%3A1615481653119&source=hp&ei=NUtKYIDHBIe6tgW4ka2wBw&iflsig=AINFCbYAAAAAYEpZRfzGbOeVlcOXMEFKhRi4LbcbOirm&q=colegio+de+bachilleres+militarizado+general+mariano+escobedo&oq=cole&gs_lcp=Cgdnd3Mtd2l6EAMYADIECCMQJzIECCMQJzIECCMQJzIECAAQQzIKCAAQsQMQgwEQQzIHCC4QsQMQQzIECAAQQzIECAAQQzIKCAAQxwEQrwEQQzIECAAQQzoICAAQsQMQgwE6AggAOgcIABCxAxBDOgsIABCxAxDHARCjAlC2CFjdC2C7HGgAcAB4AIABhwGIAesDkgEDMC40mAEAoAEBqgEHZ3dzLXdpeg&sclient=gws-wiz" role="button">
+                    <i class="fab fa-google text-white"></i>
+                </a>
+
+            </section>
+            <!-- Section: Social media -->
+ 
+            <!-- Section: Form -->
+            <section class="">
+                <form method="post" id="formdata">
+                    <!--Grid-->
+                    <div class="row d-flex justify-content-center">
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <p class="pt-2">
+                                <strong>Suscríbete</strong>
+                            </p>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-5 col-12">
+                            <!-- Email input -->
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" class="form-control" required="required"/>
+                                <label class="form-label" for="form5Example2">Correo Electrónico</label>
+                            </div>
+                        <div id="exito" class="alert alert-success d-none" role="alert">
+                            Suscrito Exitosamente.
+                        </div>
+                        <div id="fracaso" class="alert alert-danger d-none" role="alert">
+                            Vuelva a intentarlo.
+                        </div>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-outline-light mb-4">
+                                Envíar
+                            </button>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </form>
+            </section>
+            <!-- Section: Form -->
+
+            <!-- Section: Text -->
+            <section class="mb-4">
+                <p class=" blockquote text-center fw-light himno text-white">
+                   "Aquí se cultiva el intelecto con poderosa voluntad, se fortalece el cuerpo, se inculcan
+                   valores y lealtad."
+                </p>
+            </section>
+            <!-- Section: Text -->
+
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                   
+                    <!--Grid column-->
+                    <div class="col-md-3 mb-4 mb-md-0 d-flex flex-column align-items-center">
+                        <h6 class="text-uppercase text-muted">Escudo</h6>
+                        <a class="brand d-flex align-items-center ml-3" href="#">
+                            <img src="img/Log%20CM%20Bco-01.svg" alt="" height="130">
+                        </a>
+                    </div>
+                    
+                    <!--Grid column-->
+                    <div class="col-md-3 mb-4 mb-md-0 d-flex flex-column">
+                        <h6 class="text-uppercase text-muted">Teléfono</h6>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-1"><img src="img/call.svg" alt="" height="25"></div>
+                            <div class="col-md-3"><a href="tel:+8111801156" class="text-decoration-none text-white">8111801156</a></div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+
+                    <!--Grid column-->
+                    <div class="col-md-3 mb-4 mb-md-0 d-flex flex-column">
+                        <h6 class="text-uppercase text-muted">Dirección</h6>
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-1"><img src="img/place.svg" alt="" height="25"></div>
+                            <div class="col-md-7">
+                                <p class="text-left ml-1 text-white">Prol. Aztlán No. 9610 Col. San Bernabé, VIII Sector Monterrey, Nuevo León CP 64350</p>
+                            </div>
+                            <div class="col-md-2"></div>
+   
+                        </div> 
+                    </div>
+
+
+                    <!--Grid column-->
+                    <div class="col-md-3 mb-4 mb-md-0 d-flex flex-column link">
+                        <h6 class="text-uppercase text-muted">Legal</h6>
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="aviso.html" class="text-white text-decoration-none">Aviso de privacidad</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="d-flex flex-column justify-content-center p-2" style="background-color: rgba(0, 0, 0, 0.2);">
+            <a class="text-white mr-1 text-decoration-none" href="#/">codifika.mx <sup class="fs-8 text-white">®</sup></a>
+            <span class="fs-7 text-white">2021</span>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6048df5d1c1c2a130d6711fd/1f0eah1ek';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+<!--End of Tawk.to Script-->
+
+</body>
+<!-- MDB -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/mail.js"></script>
+<!-- Custom scripts -->
+
+</html>
