@@ -1,0 +1,110 @@
+---
+import {
+  FileText,
+  BookOpen,
+  GraduationCap,
+  Dumbbell,
+  Palette,
+  ShieldCheck,
+  User,
+  Settings,
+  LogOut,
+  ChevronRight,
+  ChevronDown,
+} from "lucide-astro";
+
+const { variant = "desktop", context } = Astro.props;
+
+const mainItems = [
+  { href: "#", label: "Admisiones", Icon: FileText },
+  { href: "#", label: "Inteligencia Artificial", Icon: BookOpen },
+  { href: "#", label: "Aula Virtual", Icon: GraduationCap },
+  { href: "#", label: "Deporte", Icon: Dumbbell },
+  { href: "#", label: "Arte & Cultura", Icon: Palette },
+  { href: "#", label: "SICOES", Icon: ShieldCheck },
+];
+
+const profileItems = [
+  { href: "#", label: "Mi perfil", Icon: User },
+  { href: "#", label: "Configuración", Icon: Settings },
+  { href: "#", label: "Cerrar sesión", Icon: LogOut },
+];
+
+const desktopFirst =
+  "rounded-md px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100";
+const desktopOther =
+  "rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100";
+const mobileMain =
+  "block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100";
+const mobileMainFirst =
+  "block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100";
+const profileDesktop =
+  "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100";
+const profileMobile =
+  "block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100";
+---
+
+{
+  variant === "profile" ? (
+    <>
+      {profileItems.map(({ href, label, Icon }) =>
+        context === "mobile" ? (
+          <a href={href} class={profileMobile}>
+            <span class="inline-flex items-center gap-3">
+              <span class="inline-flex h-8 w-8 items-center justify-center rounded-full ring-1 ring-stone-300 text-stone-500">
+                <Icon class="h-4 w-4" aria-hidden="true" />
+              </span>
+              <span>{label}</span>
+            </span>
+          </a>
+        ) : (
+          <a href={href} class={profileDesktop}>
+            {label}
+          </a>
+        )
+      )}
+    </>
+  ) : variant === "mobile" ? (
+    <>
+      {mainItems.map(({ href, label, Icon }, idx) => (
+        <a
+          href={href}
+          class={idx === 0 ? mobileMainFirst : mobileMain}
+          data-mobile-link={label === "Admisiones" ? "admisiones" : undefined}
+        >
+          <span class="inline-flex items-center gap-3">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full ring-1 ring-stone-300 text-stone-500">
+              <Icon class="h-4 w-4" aria-hidden="true" />
+            </span>
+            <span class="flex items-center gap-2">
+              {label}
+              {label === "Admisiones" && (
+                <ChevronRight
+                  class="h-4 w-4 text-stone-400"
+                  aria-hidden="true"
+                />
+              )}
+            </span>
+          </span>
+        </a>
+      ))}
+    </>
+  ) : (
+    <>
+      {mainItems.map(({ href, label }, idx) => (
+        <a
+          href={href}
+          class={idx === 0 ? desktopFirst : desktopOther}
+          data-desktop-link={label === "Admisiones" ? "admisiones" : undefined}
+        >
+          <span class="inline-flex items-center gap-2">
+            {label}
+            {label === "Admisiones" && (
+              <ChevronDown class="h-4 w-4 text-stone-400" aria-hidden="true" />
+            )}
+          </span>
+        </a>
+      ))}
+    </>
+  )
+}
