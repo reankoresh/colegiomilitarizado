@@ -23,21 +23,21 @@ const totalDuration = slides.length * slideDuration;
 
 <div
   id="carousel-container"
-  class="relative w-full h-dvh bg-gray-100 rounded-lg overflow-hidden"
+  class="relative w-full h-screen bg-gray-100 rounded-lg"
   data-slides-count={slides.length}
 >
   <!-- Carousel wrapper -->
-  <div class="relative w-full h-dvh">
+  <div class="relative w-full h-full overflow-hidden">
     {
       slides.map((slide, index) => (
         <div
-          class={`carousel-slide absolute w-full h-dvh transition-opacity duration-300 ${index === 0 ? "opacity-100" : "opacity-0"}`}
+          class={`carousel-slide absolute w-full h-full transition-opacity duration-300 ${index === 0 ? "opacity-100" : "opacity-0"}`}
           data-slide-index={index}
         >
           <Image
             src={slide.src}
             alt={slide.alt}
-            class="w-full h-dvh object-cover"
+            class="w-full h-full object-cover"
             loading="eager"
             inferSize={true}
           />
@@ -91,7 +91,7 @@ const totalDuration = slides.length * slideDuration;
 <script>
   let currentSlide = 0;
   let autoPlayInterval: ReturnType<typeof setInterval> | undefined;
-  const slideDuration = 4500; // 4.5 segundos
+  const slideDuration = 6000; // 4.5 segundos
 
   function initCarousel() {
     const container = document.getElementById("carousel-container");

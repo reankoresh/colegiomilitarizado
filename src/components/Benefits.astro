@@ -1,0 +1,136 @@
+---
+import Title from "./Title.astro";
+import { Gift, Shirt, Award, Shield, BookOpen, Target, Heart, Bookmark } from "lucide-astro";
+
+const benefits = [
+  {
+    name: "Gratuidad",
+    role: "Acceso Igualitario",
+    description: "Los alumnos disponen de todos los servicios educativos de forma gratuita.",
+    icon: "gift"
+  },
+  {
+    name: "Uniformes",
+    role: "Dotación Completa",
+    description: "Recibirán sus uniformes sin costo adicional.",
+    icon: "shirt"
+  },
+  {
+    name: "Acceso Directo",
+    role: "Méritos Reconocidos",
+    description: "Tres primeros lugares tendrán acceso directo sin examen cultural a los planteles militares.",
+    icon: "award"
+  },
+  {
+    name: "Servicio Militar",
+    role: "Cumplimiento Legal",
+    description: "Los varones cumplirán con el Servicio Nacional Militar, cubriendo los requisitos.",
+    icon: "shield"
+  },
+  {
+    name: "Profesionalismo",
+    role: "Excelencia Docente",
+    description: "Se dispone de profesores altamente calificados e instructores militares profesionales.",
+    icon: "book"
+  },
+  {
+    name: "Disciplina",
+    role: "Normatividad Clara",
+    description: "Las actividades están regidas por una normatividad que garantiza la disciplina.",
+    icon: "target"
+  },
+  {
+    name: "Valores",
+    role: "Formación Integral",
+    description: "El aprendizaje, ejercicio cotidiano, valores éticos y nacionalistas son una constante.",
+    icon: "heart"
+  },
+  {
+    name: "Certificación",
+    role: "Especialización Técnica",
+    description: "Egresan certificados como técnicos en logística, promotor deportivo y asistente contable de almacén.",
+    icon: "bookmark"
+  }
+];
+
+const iconMap: Record<string, any> = {
+  gift: Gift,
+  shirt: Shirt,
+  award: Award,
+  shield: Shield,
+  book: BookOpen,
+  target: Target,
+  heart: Heart,
+  bookmark: Bookmark
+};
+---
+---
+
+<section class="w-full bg-white py-16 px-6">
+  <div class="max-w-7xl mx-auto">
+    <Title tag="h2" class="mb-12">Servicios</Title>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {benefits.map((benefit) => (
+        <div 
+          class="benefit-card relative w-full h-96 rounded-xl p-0.5 bg-white backdrop-blur-md text-gray-800 overflow-hidden shadow-lg cursor-pointer transition-all duration-300"
+          data-benefit={benefit.name}
+        >
+          <div class="pointer-events-none blur-xl bg-gradient-to-r from-orange-400 via-orange-500 to-orange-500 size-60 absolute z-0 transition-opacity duration-300 opacity-0"
+            style="top: 0; left: 0;"
+          />
+
+          <div class="relative z-10 bg-white p-6 h-full w-full rounded-xl flex flex-col items-center justify-center text-center">
+            <div class="w-20 h-20 rounded-full bg-orange-100 flex items-center justify-center mb-4">
+              {iconMap[benefit.icon] && (
+                <div class="w-10 h-10 text-orange-500">
+                  {(() => {
+                    const IconComponent = iconMap[benefit.icon];
+                    return <IconComponent class="w-10 h-10 text-orange-500 stroke-1" />;
+                  })()}
+                </div>
+              )}
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-1">{benefit.name}</h3>
+            <p class="text-sm text-indigo-500 font-medium mb-3">{benefit.role}</p>
+            <p class="text-sm text-gray-500 mb-4 px-2">
+              {benefit.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const cards = document.querySelectorAll('.benefit-card');
+  
+  cards.forEach(card => {
+    const glowDiv = card.querySelector('div[style*="top"]');
+    
+    card.addEventListener('mousemove', (e) => {
+      const bounds = card.getBoundingClientRect();
+      const x = e.clientX - bounds.left;
+      const y = e.clientY - bounds.top;
+      
+      glowDiv.style.top = (y - 120) + 'px';
+      glowDiv.style.left = (x - 120) + 'px';
+    });
+    
+    card.addEventListener('mouseenter', () => {
+      glowDiv.classList.remove('opacity-0');
+      glowDiv.classList.add('opacity-100');
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      glowDiv.classList.remove('opacity-100');
+      glowDiv.classList.add('opacity-0');
+    });
+  });
+</script>
+
+<style>
+  .benefit-card div[style*="top"] {
+    transition: opacity 0.3s duration-300;
+  }
+</style>

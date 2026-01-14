@@ -2,6 +2,7 @@
 import Admissions from "./Admissions.astro";
 import Links from "./Links.astro";
 import { Circle, Search, Bell, Menu, X } from "lucide-astro";
+
 ---
 
 <nav
@@ -11,14 +12,14 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <div class="flex items-center">
-        <div class="flex-shrink-0">
+        <div class="shrink-0">
           <a href="/" class="flex items-center gap-2">
             <span class="sr-only">Logo</span>
             <Circle
-              class="logo-icon h-8 w-8 text-blue-600"
+              class="logo-icon h-8 w-8 text-orange-400"
               aria-hidden="true"
             />
-            <span class="font-medium text-gray-900">Colegio</span>
+            <span class="font-medium text-white">Colegio</span>
           </a>
         </div>
         <div class="hidden md:block">
@@ -28,7 +29,7 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
             <!-- Dropdown escritorio de Admisiones (igual estética que perfil) -->
             <div
               id="admisiones-dropdown"
-              class="hidden absolute left-0 top-full mt-2 z-50 w-[38rem] rounded-xl bg-white shadow-md ring-1 ring-black/5 opacity-0 transition-opacity duration-200 ease-out"
+              class="hidden absolute left-0 top-full mt-2 z-50 w-152 rounded-xl bg-white shadow-md ring-1 ring-black/5 opacity-0 transition-opacity duration-200 ease-out"
             >
               <!-- Menú compartido -->
               <div class="p-2 md:p-4">
