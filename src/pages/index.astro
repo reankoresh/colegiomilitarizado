@@ -49,4 +49,160 @@ const slides = [
   <Carousel slides={slides} />
   <Mision />
   <Benefits />
+    <!-- Voting modal (client-side, localStorage) -->
+    <div id="vote-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-2 sm:p-4">
+      <div class="bg-white rounded-lg shadow-2xl w-full max-w-4xl flex flex-col p-3 sm:p-6 md:p-10 relative min-h-[400px] sm:min-h-[500px] md:min-h-[600px]" >
+        <div class="flex justify-end mb-2 sm:mb-4">
+          <button id="vote-close" class="text-gray-700 hover:text-gray-900 text-2xl sm:text-3xl md:text-4xl font-bold leading-none">×</button>
+        </div>
+        <div class="flex-1 flex items-center justify-center">
+          <!-- Contenido de votación -->
+          <div id="vote-content" class="w-full flex flex-col items-center justify-center space-y-3 sm:space-y-6">
+            <div class="flex flex-row gap-3 sm:gap-6 md:gap-8 w-full justify-center items-stretch">
+              <div class="flex-1 flex flex-col items-center justify-between space-y-2 sm:space-y-4">
+                <div class="w-full flex items-center justify-center flex-1 min-h-[150px] sm:min-h-[200px] md:min-h-[300px]">
+                  <img id="vote-img-a" src="./new.png" alt="Opción A" class="max-w-full max-h-full object-contain cursor-pointer hover:opacity-80 transition-opacity" />
+                </div>
+                <button id="count-a" class="w-full px-3 py-2 sm:px-6 sm:py-3 text-white rounded-lg font-semibold text-sm sm:text-base md:text-lg cursor-pointer hover:opacity-90 transition-opacity" style="background-color:#FF7728;">Votar</button>
+              </div>
+              <div class="flex-1 flex flex-col items-center justify-between space-y-2 sm:space-y-4">
+                <div class="w-full flex items-center justify-center flex-1 min-h-[150px] sm:min-h-[200px] md:min-h-[300px]">
+                  <img id="vote-img-b" src="./old.png" alt="Opción B" class="max-w-full max-h-full object-contain cursor-pointer hover:opacity-80 transition-opacity" />
+                </div>
+                <button id="count-b" class="w-full px-3 py-2 sm:px-6 sm:py-3 text-white rounded-lg font-semibold text-sm sm:text-base md:text-lg cursor-pointer hover:opacity-90 transition-opacity" style="background-color:#FF7728;">Votar</button>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm md:text-base text-neutral-600 w-full text-center px-2 sm:px-4">Haz clic en una imagen para votar. No podrás votar de nuevo desde el mismo navegador durante 24 horas.</p>
+          </div>
+          <!-- Mensaje de agradecimiento -->
+          <div id="thank-you-message" class="hidden w-full flex flex-col items-center justify-center space-y-4 sm:space-y-6">
+            <svg class="w-20 h-20 sm:w-32 sm:h-32 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 text-center px-4">¡Gracias por votar!</h2>
+            <p class="text-sm sm:text-base md:text-lg text-gray-600 text-center px-4">Tu voto ha sido registrado exitosamente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function(){
+        const modal = document.getElementById('vote-modal');
+        const closeBtn = document.getElementById('vote-close');
+        const imgA = document.getElementById('vote-img-a');
+        const imgB = document.getElementById('vote-img-b');
+        const countA = document.getElementById('count-a');
+        const countB = document.getElementById('count-b');
+        const voteContent = document.getElementById('vote-content');
+        const thankYouMessage = document.getElementById('thank-you-message');
+
+        const KEY_A = 'votes_a';
+        const KEY_B = 'votes_b';
+        const KEY_LAST = 'votes_last';
+        const THROTTLE_MS = 24 * 60 * 60 * 1000; // 24 hours
+
+        function readCounts(){
+          const a = parseInt(localStorage.getItem(KEY_A) || '0', 10);
+          const b = parseInt(localStorage.getItem(KEY_B) || '0', 10);
+          return { a, b };
+        }
+
+        function renderCounts(){
+          const { a, b } = readCounts();
+          countA.textContent = 'Votar';
+          countB.textContent = 'Votar';
+        }
+
+        function canVote(){
+          const last = parseInt(localStorage.getItem(KEY_LAST) || '0', 10);
+          return Date.now() - last >= THROTTLE_MS;
+        }
+
+        function showThankYou(){
+          voteContent.classList.add('hidden');
+          thankYouMessage.classList.remove('hidden');
+          // Cerrar automáticamente después de 3 segundos
+          setTimeout(() => {
+            modal.style.display = 'none';
+            // Resetear vista para la próxima vez
+            setTimeout(() => {
+              voteContent.classList.remove('hidden');
+              thankYouMessage.classList.add('hidden');
+            }, 300);
+          }, 3000);
+        }
+
+        async function sendVoteToServer(option, timestamp){
+          try {
+            await fetch('/api/vote/submit', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                option: option,
+                timestamp: timestamp
+              })
+            });
+          } catch (error) {
+            console.error('Error enviando voto al servidor:', error);
+            // No mostramos error al usuario, el voto ya está guardado localmente
+          }
+        }
+
+        function doVote(id){
+          // TEMPORAL: Comentado para pruebas - Descomentar para activar restricción de 24 horas
+          
+          if (!canVote()){
+            const last = parseInt(localStorage.getItem(KEY_LAST) || '0', 10);
+            const waitSeconds = Math.ceil((THROTTLE_MS - (Date.now() - last))/1000);
+            let waitMsg = waitSeconds + ' segundos';
+            if (waitSeconds >= 3600) {
+              const hours = Math.ceil(waitSeconds / 3600);
+              waitMsg = hours + ' horas';
+            } else if (waitSeconds >= 60) {
+              const mins = Math.ceil(waitSeconds / 60);
+              waitMsg = mins + ' minutos';
+            }
+            alert('Ya votaste recientemente. Intenta en ' + waitMsg + '.');
+            return;
+          }
+          
+          
+          const timestamp = Date.now();
+          
+          if(id === 'a'){
+            const cur = parseInt(localStorage.getItem(KEY_A) || '0', 10) + 1;
+            localStorage.setItem(KEY_A, String(cur));
+          } else if(id === 'b'){
+            const cur = parseInt(localStorage.getItem(KEY_B) || '0', 10) + 1;
+            localStorage.setItem(KEY_B, String(cur));
+          }
+          localStorage.setItem(KEY_LAST, String(timestamp));
+          
+          // Enviar voto al servidor (Google Sheets) en segundo plano
+          sendVoteToServer(id, timestamp);
+          
+          renderCounts();
+          showThankYou();
+        }
+
+        imgA.addEventListener('click', ()=> doVote('a'));
+        imgB.addEventListener('click', ()=> doVote('b'));
+        countA.addEventListener('click', ()=> doVote('a'));
+        countB.addEventListener('click', ()=> doVote('b'));
+        closeBtn.addEventListener('click', ()=> { 
+          modal.style.display = 'none';
+          // Resetear vista al cerrar manualmente
+          setTimeout(() => {
+            voteContent.classList.remove('hidden');
+            thankYouMessage.classList.add('hidden');
+          }, 300);
+        });
+
+        // render initially
+        renderCounts();
+      })();
+    </script>
 </Layout>
