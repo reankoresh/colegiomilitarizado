@@ -15,7 +15,7 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
         <div class="shrink-0">
           <a href="/" class="flex items-center gap-2">
             <span class="sr-only">Logo</span>
-            <img src="/logoCM.svg" alt="Colegio Militarizado" class="h-44 w-44">
+            <img src="/logoCMWhite.svg" alt="Colegio Militarizado" class="h-25 w-25 md:h-44 md:w-44">
           </a>
         </div>
         <div class="hidden md:block">
@@ -25,7 +25,7 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
             <!-- Dropdown escritorio de Admisiones (igual estética que perfil) -->
             <div
               id="admisiones-dropdown"
-              class="hidden absolute left-0 top-full mt-2 z-50 w-152 rounded-xl bg-white shadow-md ring-1 ring-black/5 opacity-0 transition-opacity duration-200 ease-out"
+              class="hidden absolute left-0 top-full mt-2 z-50 w-152 rounded-xl bg-stone-900/80 backdrop-blur-sm shadow-md ring-1 ring-white/10 opacity-0 transition-opacity duration-200 ease-out"
             >
               <!-- Menú compartido -->
               <div class="p-2 md:p-4">
@@ -99,25 +99,29 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
           aria-expanded="false"
         >
           <span class="sr-only">Abrir menú principal</span>
-          <!-- Iconos con transición suave -->
-          <Menu
-            class="icon-menu h-6 w-6 transition-opacity duration-150 ease-out"
-            aria-hidden="true"
-          />
-          <X
-            class="icon-close h-6 w-6 transition-opacity duration-150 ease-out hidden opacity-0"
-            aria-hidden="true"
-          />
+          <Menu class="h-6 w-6" aria-hidden="true" />
         </button>
       </div>
     </div>
   </div>
 
   <div
-    class="md:hidden hidden opacity-0 transition-opacity duration-200 ease-out"
+    class="md:hidden hidden opacity-0 transition-opacity duration-200 ease-out bg-stone-900/80 backdrop-blur-sm fixed inset-0 z-40"
     id="mobile-menu"
   >
-    <div class="space-y-1 px-2 pb-3 pt-2">
+    <!-- Botón cerrar dentro del menú -->
+    <div class="absolute top-4 right-4 z-50">
+      <button
+        id="close-mobile-menu"
+        type="button"
+        class="inline-flex items-center justify-center rounded-md bg-white/10 p-2 text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white"
+      >
+        <span class="sr-only">Cerrar menú</span>
+        <X class="h-6 w-6" aria-hidden="true" />
+      </button>
+    </div>
+
+    <div class="space-y-1 px-2 pb-3 pt-20">
       <Links variant="mobile" />
     </div>
 
@@ -132,19 +136,19 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
   <!-- Submenú mobile: Admisiones (segundo nivel) -->
   <div
     id="mobile-sub-admisiones"
-    class="md:hidden hidden fixed inset-0 z-50 bg-white opacity-0 transition-opacity duration-200 ease-out"
+    class="md:hidden hidden fixed inset-0 z-50 bg-stone-900/80 backdrop-blur-sm opacity-0 transition-opacity duration-200 ease-out"
   >
     <div class="h-full w-full overflow-y-auto px-4 pt-4 pb-8">
       <!-- Header con Back y marca -->
       <div class="flex items-center justify-between mb-4">
         <button
           id="admisiones-back"
-          class="inline-flex items-center gap-2 text-stone-700 rounded-md px-2 py-1 hover:bg-stone-100"
+          class="inline-flex items-center gap-2 text-white rounded-md px-2 py-1 hover:bg-white/10"
         >
           <span class="text-xl">‹</span>
           <span class="text-sm font-medium">Back</span>
         </button>
-        <span class="text-stone-400 text-sm">hume</span>
+        <span class="text-gray-400 text-sm">hume</span>
       </div>
 
       <!-- Models -->
@@ -157,72 +161,43 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
             'button[aria-controls="mobile-menu"]'
           );
           const menu = document.getElementById("mobile-menu");
+          const closeBtn = document.getElementById("close-mobile-menu");
 
           if (btn && menu) {
             btn.setAttribute("aria-expanded", "false");
-            // refs de iconos
-            const menuIcon = btn.querySelector(
-              ".icon-menu"
-            ) as HTMLElement | null;
-            const closeIcon = btn.querySelector(
-              ".icon-close"
-            ) as HTMLElement | null;
 
             // estado inicial
             menu.classList.add("hidden", "opacity-0");
-            closeIcon?.classList.add("hidden", "opacity-0");
-            menuIcon?.classList.remove("hidden", "opacity-0");
 
             const closeMenu = () => {
               btn.setAttribute("aria-expanded", "false");
               menu.classList.add("opacity-0");
-              // fade icons
-              closeIcon?.classList.add("opacity-0");
-              requestAnimationFrame(() => {
-                closeIcon?.classList.add("hidden");
-                menuIcon?.classList.remove("hidden");
-                requestAnimationFrame(() =>
-                  menuIcon?.classList.remove("opacity-0")
-                );
-              });
               // ocultar tras transición
               setTimeout(() => menu.classList.add("hidden"), 200);
             };
 
+            const openMenu = () => {
+              btn.setAttribute("aria-expanded", "true");
+              menu.classList.remove("hidden");
+              requestAnimationFrame(() => menu.classList.remove("opacity-0"));
+            };
+
             const toggleMenu = () => {
               const expanded = btn.getAttribute("aria-expanded") === "true";
-              const newExpanded = !expanded;
-              btn.setAttribute("aria-expanded", newExpanded.toString());
-
-              if (newExpanded) {
-                // mostrar con fade
-                menu.classList.remove("hidden");
-                requestAnimationFrame(() => menu.classList.remove("opacity-0"));
-                // swap icons con fade
-                menuIcon?.classList.add("opacity-0");
-                requestAnimationFrame(() => {
-                  menuIcon?.classList.add("hidden");
-                  closeIcon?.classList.remove("hidden");
-                  requestAnimationFrame(() =>
-                    closeIcon?.classList.remove("opacity-0")
-                  );
-                });
-              } else {
+              if (expanded) {
                 closeMenu();
+              } else {
+                openMenu();
               }
             };
 
             btn.addEventListener("click", toggleMenu);
+            closeBtn?.addEventListener("click", closeMenu);
+            
             document.addEventListener("keydown", (e) => {
               if (e.key === "Escape") closeMenu();
             });
-            document.addEventListener("click", (e) => {
-              if (btn.getAttribute("aria-expanded") === "true") {
-                const target = e.target as Node | null;
-                if (target && !menu.contains(target) && !btn.contains(target))
-                  closeMenu();
-              }
-            });
+            
             menu
               .querySelectorAll("a")
               .forEach((a) => a.addEventListener("click", closeMenu));
@@ -293,19 +268,19 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
               "md:py-6"
             );
             nav.classList.remove(
-              "bg-white/80",
-              "border-gray-200",
+              "bg-stone-900/80",
+              "border-white/10",
               "shadow-md",
-              "backdrop-blur-lg",
+              "backdrop-blur-sm",
               "py-3",
               "md:py-4"
             );
             if (scrolled) {
               nav.classList.add(
-                "bg-white/80",
-                "border-gray-200",
+                "bg-stone-900/80",
+                "border-white/10",
                 "shadow-md",
-                "backdrop-blur-lg",
+                "backdrop-blur-sm",
                 "py-3",
                 "md:py-4",
                 "is-scrolled"

@@ -42,9 +42,9 @@ const totalDuration = slides.length * slideDuration;
             inferSize={true}
           />
           <div class="absolute inset-0 bg-black/50" />
-          <div class="absolute inset-0 flex items-center justify-center text-center ">
-            <div>
-              <Title tag="h1" color="white">
+          <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+            <div class="w-11/12 max-w-6xl">
+              <Title tag="h1" color="white" class="text-[2.1rem] md:text-7xl">
                 {slide.title}
               </Title>
               <Title tag="h5" color="white">
@@ -57,9 +57,20 @@ const totalDuration = slides.length * slideDuration;
     }
   </div>
 
-  <!-- Indicadores dinámicos -->
+  <!-- Indicadores mobile (debajo del texto, centrado) -->
+  <div class="md:hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 mt-32 flex justify-center space-x-2">
+    {
+      slides.map((_, index) => (
+        <div
+          class={`carousel-indicator-mobile w-2.5 h-2.5 rounded-full ${index === 0 ? "bg-white/70" : "bg-white/30"}`}
+        />
+      ))
+    }
+  </div>
+
+  <!-- Indicadores desktop (bottom) -->
   <div
-    class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
+    class="hidden md:flex absolute bottom-4 left-1/2 transform -translate-x-1/2 space-x-2"
   >
     {
       slides.map((_, index) => (
@@ -70,10 +81,10 @@ const totalDuration = slides.length * slideDuration;
     }
   </div>
 
-  <!-- Botones de navegación -->
+  <!-- Botones de navegación (solo desktop) -->
   <button
     id="prev-btn"
-    class="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/30 hover:bg-white/50 flex items-center justify-center transition-colors duration-200"
+    class="hidden md:flex absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/30 hover:bg-white/50 items-center justify-center transition-colors duration-200"
     aria-label="Slide anterior"
   >
     <ChevronLeft class="w-6 h-6 text-white" />
@@ -81,7 +92,7 @@ const totalDuration = slides.length * slideDuration;
 
   <button
     id="next-btn"
-    class="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/30 hover:bg-white/50 flex items-center justify-center transition-colors duration-200"
+    class="hidden md:flex absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/30 hover:bg-white/50 items-center justify-center transition-colors duration-200"
     aria-label="Siguiente slide"
   >
     <ChevronRight class="w-6 h-6 text-white" />
@@ -100,6 +111,7 @@ const totalDuration = slides.length * slideDuration;
     const slidesCount = parseInt(container.dataset.slidesCount || "0");
     const slides = container.querySelectorAll(".carousel-slide");
     const indicators = container.querySelectorAll(".carousel-indicator");
+    const indicatorsMobile = container.querySelectorAll(".carousel-indicator-mobile");
     const prevBtn = document.getElementById("prev-btn");
     const nextBtn = document.getElementById("next-btn");
 
@@ -108,8 +120,14 @@ const totalDuration = slides.length * slideDuration;
       slides.forEach((slide) => slide.classList.remove("opacity-100"));
       slides.forEach((slide) => slide.classList.add("opacity-0"));
 
-      // Resetear indicadores
+      // Resetear indicadores desktop
       indicators.forEach((indicator) => {
+        indicator.classList.remove("bg-white/70");
+        indicator.classList.add("bg-white/30");
+      });
+
+      // Resetear indicadores mobile
+      indicatorsMobile.forEach((indicator) => {
         indicator.classList.remove("bg-white/70");
         indicator.classList.add("bg-white/30");
       });
@@ -120,10 +138,16 @@ const totalDuration = slides.length * slideDuration;
         slides[index].classList.add("opacity-100");
       }
 
-      // Activar indicador actual
+      // Activar indicador desktop actual
       if (indicators[index]) {
         indicators[index].classList.remove("bg-white/30");
         indicators[index].classList.add("bg-white/70");
+      }
+
+      // Activar indicador mobile actual
+      if (indicatorsMobile[index]) {
+        indicatorsMobile[index].classList.remove("bg-white/30");
+        indicatorsMobile[index].classList.add("bg-white/70");
       }
     }
 
@@ -157,6 +181,40 @@ const totalDuration = slides.length * slideDuration;
       prevSlide();
       startAutoPlay();
     });
+
+    // Touch/Swipe support para mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const minSwipeDistance = 50; // píxeles mínimos para considerar un swipe
+
+    container.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    container.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeDistance = touchEndX - touchStartX;
+      
+      if (Math.abs(swipeDistance) < minSwipeDistance) {
+        return; // No fue un swipe suficientemente largo
+      }
+
+      stopAutoPlay();
+      
+      if (swipeDistance > 0) {
+        // Swipe hacia la derecha -> slide anterior
+        prevSlide();
+      } else {
+        // Swipe hacia la izquierda -> slide siguiente
+        nextSlide();
+      }
+      
+      startAutoPlay();
+    }
 
     // Iniciar autoplay
     startAutoPlay();
