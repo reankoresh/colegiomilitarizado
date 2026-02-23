@@ -1,7 +1,7 @@
 ---
 import { ChevronLeft, ChevronRight } from "lucide-astro";
 import { Image } from "astro:assets";
-import Title from "./Title.astro";
+import Title from "../ui/Title.astro";
 
 export interface SlideItem {
   src: ImageMetadata;
@@ -84,7 +84,7 @@ const totalDuration = slides.length * slideDuration;
   <!-- Botones de navegación (solo desktop) -->
   <button
     id="prev-btn"
-    class="hidden md:flex absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/30 hover:bg-white/50 items-center justify-center transition-colors duration-200"
+    class="hidden md:flex absolute left-[4.5%] top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/30 hover:bg-white/50 items-center justify-center transition-colors duration-200"
     aria-label="Slide anterior"
   >
     <ChevronLeft class="w-6 h-6 text-white" />
@@ -92,7 +92,7 @@ const totalDuration = slides.length * slideDuration;
 
   <button
     id="next-btn"
-    class="hidden md:flex absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/30 hover:bg-white/50 items-center justify-center transition-colors duration-200"
+    class="hidden md:flex absolute right-[4.5%] top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/30 hover:bg-white/50 items-center justify-center transition-colors duration-200"
     aria-label="Siguiente slide"
   >
     <ChevronRight class="w-6 h-6 text-white" />

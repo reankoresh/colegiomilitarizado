@@ -1,5 +1,5 @@
 ---
-import Title from "./Title.astro";
+import Title from "../ui/Title.astro";
 import { Gift, Shirt, Award, Shield, BookOpen, Target, Heart, Bookmark } from "lucide-astro";
 
 const benefits = [
@@ -64,10 +64,9 @@ const iconMap: Record<string, any> = {
   bookmark: Bookmark
 };
 ---
----
 
 <section class="w-full bg-white py-16 px-6">
-  <div class="max-w-7xl mx-auto">
+  <div class="w-full md:w-11/12 max-w-7xl mx-auto">
     <Title tag="h2" class="mb-12">Servicios</Title>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {benefits.map((benefit) => (

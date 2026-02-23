@@ -1,5 +1,5 @@
 ---
-import Admissions from "./Admissions.astro";
+import Admissions from "./menus/Admissions.astro";
 import Links from "./Links.astro";
 import { Circle, Search, Bell, Menu, X } from "lucide-astro";
 
@@ -106,7 +106,7 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
   </div>
 
   <div
-    class="md:hidden hidden opacity-0 transition-opacity duration-200 ease-out bg-stone-900/80 backdrop-blur-sm fixed inset-0 z-40"
+    class="md:hidden hidden opacity-0 transition-opacity duration-200 ease-out bg-stone-900/80 backdrop-blur-sm fixed inset-0 z-40 overflow-hidden"
     id="mobile-menu"
   >
     <!-- Botón cerrar dentro del menú -->
@@ -136,270 +136,353 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
   <!-- Submenú mobile: Admisiones (segundo nivel) -->
   <div
     id="mobile-sub-admisiones"
-    class="md:hidden hidden fixed inset-0 z-50 bg-stone-900/80 backdrop-blur-sm opacity-0 transition-opacity duration-200 ease-out"
+    class="md:hidden hidden fixed inset-0 z-50 bg-stone-900/80 backdrop-blur-sm opacity-0 transition-opacity duration-200 ease-out overflow-hidden overscroll-none touch-none"
   >
-    <div class="h-full w-full overflow-y-auto px-4 pt-4 pb-8">
-      <!-- Header con Back y marca -->
-      <div class="flex items-center justify-between mb-4">
-        <button
-          id="admisiones-back"
-          class="inline-flex items-center gap-2 text-white rounded-md px-2 py-1 hover:bg-white/10"
-        >
-          <span class="text-xl">‹</span>
-          <span class="text-sm font-medium">Back</span>
-        </button>
-        <span class="text-gray-400 text-sm">hume</span>
-      </div>
+    <div class="h-full flex flex-col overflow-hidden">
+    <!-- Botón Back dentro del menú -->
+    <div class="shrink-0 px-4 pt-4 pb-2">
+      <button
+        id="admisiones-back"
+        class="inline-flex items-center gap-2 text-white rounded-md bg-white/10 px-3 py-2 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white touch-auto"
+      >
+        <span class="text-xl">‹</span>
+        <span class="text-sm font-medium">Volver</span>
+      </button>
+    </div>
 
-      <!-- Models -->
-      <div class="space-y-3">
-        <!-- Menú compartido (mobile) -->
-        <Admissions />
-
-        <script>
-          const btn = document.querySelector(
-            'button[aria-controls="mobile-menu"]'
-          );
-          const menu = document.getElementById("mobile-menu");
-          const closeBtn = document.getElementById("close-mobile-menu");
-
-          if (btn && menu) {
-            btn.setAttribute("aria-expanded", "false");
-
-            // estado inicial
-            menu.classList.add("hidden", "opacity-0");
-
-            const closeMenu = () => {
-              btn.setAttribute("aria-expanded", "false");
-              menu.classList.add("opacity-0");
-              // ocultar tras transición
-              setTimeout(() => menu.classList.add("hidden"), 200);
-            };
-
-            const openMenu = () => {
-              btn.setAttribute("aria-expanded", "true");
-              menu.classList.remove("hidden");
-              requestAnimationFrame(() => menu.classList.remove("opacity-0"));
-            };
-
-            const toggleMenu = () => {
-              const expanded = btn.getAttribute("aria-expanded") === "true";
-              if (expanded) {
-                closeMenu();
-              } else {
-                openMenu();
-              }
-            };
-
-            btn.addEventListener("click", toggleMenu);
-            closeBtn?.addEventListener("click", closeMenu);
-            
-            document.addEventListener("keydown", (e) => {
-              if (e.key === "Escape") closeMenu();
-            });
-            
-            menu
-              .querySelectorAll("a")
-              .forEach((a) => a.addEventListener("click", closeMenu));
-          }
-
-          // Dropdown perfil (añadir fade)
-          const profileBtn = document.getElementById("profile-btn");
-          const profileDropdown = document.getElementById("profile-dropdown");
-          if (profileBtn && profileDropdown) {
-            profileBtn.setAttribute("aria-expanded", "false");
-            profileDropdown.classList.add(
-              "opacity-0",
-              "transition-opacity",
-              "duration-200",
-              "ease-out"
-            );
-
-            const hideProfile = () => {
-              profileBtn.setAttribute("aria-expanded", "false");
-              profileDropdown.classList.add("opacity-0");
-              setTimeout(() => profileDropdown.classList.add("hidden"), 200);
-            };
-            const showProfile = () => {
-              profileDropdown.classList.remove("hidden");
-              requestAnimationFrame(() =>
-                profileDropdown.classList.remove("opacity-0")
-              );
-            };
-
-            const toggleProfile = () => {
-              const ex = profileBtn.getAttribute("aria-expanded") === "true";
-              profileBtn.setAttribute("aria-expanded", (!ex).toString());
-              if (!ex) showProfile();
-              else hideProfile();
-            };
-
-            profileBtn.addEventListener("click", (e) => {
-              e.stopPropagation();
-              toggleProfile();
-            });
-            document.addEventListener("keydown", (e) => {
-              if (e.key === "Escape") hideProfile();
-            });
-            document.addEventListener("click", (e) => {
-              if (profileBtn.getAttribute("aria-expanded") === "true") {
-                const target = e.target as Node | null;
-                if (
-                  target &&
-                  !profileDropdown.contains(target) &&
-                  !profileBtn.contains(target)
-                )
-                  hideProfile();
-              }
-            });
-            profileDropdown
-              .querySelectorAll("a")
-              .forEach((a) => a.addEventListener("click", hideProfile));
-          }
-
-          // Efecto scroll
-          const nav = document.getElementById("site-navbar");
-          const applyScrolled = (scrolled: boolean) => {
-            if (!nav) return;
-            nav.classList.remove(
-              "bg-transparent",
-              "border-transparent",
-              "py-4",
-              "md:py-6"
-            );
-            nav.classList.remove(
-              "bg-stone-900/80",
-              "border-white/10",
-              "shadow-md",
-              "backdrop-blur-sm",
-              "py-3",
-              "md:py-4"
-            );
-            if (scrolled) {
-              nav.classList.add(
-                "bg-stone-900/80",
-                "border-white/10",
-                "shadow-md",
-                "backdrop-blur-sm",
-                "py-3",
-                "md:py-4",
-                "is-scrolled"
-              );
-            } else {
-              nav.classList.add(
-                "bg-transparent",
-                "border-transparent",
-                "py-4",
-                "md:py-6"
-              );
-              nav.classList.remove("is-scrolled");
-            }
-          };
-          applyScrolled(window.scrollY > 10);
-          window.addEventListener(
-            "scroll",
-            () => applyScrolled(window.scrollY > 10),
-            {
-              passive: true,
-            }
-          );
-
-          // Toggle submenú Admisiones en mobile
-          const mobileMenu = document.getElementById("mobile-menu");
-          const mobileSub = document.getElementById("mobile-sub-admisiones");
-          const mobileBack = document.getElementById("admisiones-back");
-
-          if (mobileMenu && mobileSub) {
-            // detectar click en el link "Admisiones"
-            mobileMenu
-              .querySelectorAll('[data-mobile-link="admisiones"]')
-              .forEach((lnk) => {
-                lnk.addEventListener("click", (e) => {
-                  e.preventDefault();
-                  // ocultar menú y mostrar submenú con fade
-                  mobileMenu.classList.add("opacity-0");
-                  setTimeout(() => {
-                    mobileMenu.classList.add("hidden");
-                    mobileSub.classList.remove("hidden");
-                    requestAnimationFrame(() =>
-                      mobileSub.classList.remove("opacity-0")
-                    );
-                  }, 200);
-                });
-              });
-
-            // regresar (Back)
-            mobileBack?.addEventListener("click", (e) => {
-              e.preventDefault();
-              mobileSub.classList.add("opacity-0");
-              setTimeout(() => {
-                mobileSub.classList.add("hidden");
-                mobileMenu.classList.remove("hidden");
-                requestAnimationFrame(() =>
-                  mobileMenu.classList.remove("opacity-0")
-                );
-              }, 200);
-            });
-
-            // cerrar submenú si se cierra el menú principal (ESC o click fuera)
-            document.addEventListener("keydown", (e) => {
-              if (e.key === "Escape") {
-                mobileSub.classList.add("opacity-0");
-                setTimeout(() => mobileSub.classList.add("hidden"), 200);
-              }
-            });
-          }
-
-          // Toggle dropdown de Admisiones (desktop) con fade
-          const desktopLinksContainer = document.querySelector(
-            ".ml-10.flex.items-center.space-x-4"
-          ) as HTMLElement | null;
-          const admDropdown = document.getElementById("admisiones-dropdown");
-          if (desktopLinksContainer && admDropdown) {
-            const admLink = desktopLinksContainer.querySelector(
-              '[data-desktop-link="admisiones"]'
-            ) as HTMLElement | null;
-
-            const hideAdm = () => {
-              admDropdown.classList.add("opacity-0");
-              setTimeout(() => admDropdown.classList.add("hidden"), 200);
-            };
-            const showAdm = () => {
-              admDropdown.classList.remove("hidden");
-              requestAnimationFrame(() =>
-                admDropdown.classList.remove("opacity-0")
-              );
-            };
-            const toggleAdm = () => {
-              const isHidden = admDropdown.classList.contains("hidden");
-              if (isHidden) showAdm();
-              else hideAdm();
-            };
-
-            admLink?.addEventListener("click", (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              toggleAdm();
-            });
-            document.addEventListener("click", (e) => {
-              const target = e.target as Node | null;
-              if (!target) return;
-              if (!admDropdown.contains(target) && !admLink?.contains(target))
-                hideAdm();
-            });
-            document.addEventListener("keydown", (e) => {
-              if (e.key === "Escape") hideAdm();
-            });
-          }
-        </script>
-
-        <style>
-          .is-scrolled .logo-icon {
-            filter: invert(1);
-            opacity: 0.8;
-          }
-        </style>
-      </div>
+    <!-- Contenido del submenú -->
+    <div class="flex-1 px-4 py-4 overflow-hidden">
+      <Admissions />
+    </div>
     </div>
   </div>
 </nav>
+
+<script>
+  // Variable para guardar posición de scroll
+  let scrollPosition = 0;
+  
+  // Función para prevenir scroll y touch
+  const preventDefault = (e: Event) => {
+    e.preventDefault();
+  };
+  
+  const btn = document.querySelector(
+    'button[aria-controls="mobile-menu"]'
+  );
+  const menu = document.getElementById("mobile-menu");
+  const closeBtn = document.getElementById("close-mobile-menu");
+
+  if (btn && menu) {
+    btn.setAttribute("aria-expanded", "false");
+
+    // estado inicial
+    menu.classList.add("hidden", "opacity-0");
+
+    const closeMenu = () => {
+      btn.setAttribute("aria-expanded", "false");
+      menu.classList.add("opacity-0");
+      // restaurar scroll del body
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      // remover event listeners de prevención de scroll
+      document.removeEventListener('touchmove', preventDefault);
+      document.removeEventListener('wheel', preventDefault, { passive: false } as any);
+      window.scrollTo(0, scrollPosition);
+      // ocultar tras transición
+      setTimeout(() => menu.classList.add("hidden"), 200);
+    };
+
+    const openMenu = () => {
+      btn.setAttribute("aria-expanded", "true");
+      menu.classList.remove("hidden");
+      // guardar posición actual de scroll
+      scrollPosition = window.scrollY;
+      // bloquear scroll del body y fijar posición
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollPosition}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      // prevenir scroll con touch y wheel
+      document.addEventListener('touchmove', preventDefault, { passive: false });
+      document.addEventListener('wheel', preventDefault, { passive: false });
+      requestAnimationFrame(() => menu.classList.remove("opacity-0"));
+    };
+
+    const toggleMenu = () => {
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      if (expanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    };
+
+    btn.addEventListener("click", toggleMenu);
+    closeBtn?.addEventListener("click", closeMenu);
+    
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+    
+    menu
+      .querySelectorAll("a")
+      .forEach((a) => a.addEventListener("click", closeMenu));
+  }
+
+  // Dropdown perfil (añadir fade)
+  const profileBtn = document.getElementById("profile-btn");
+  const profileDropdown = document.getElementById("profile-dropdown");
+  if (profileBtn && profileDropdown) {
+    profileBtn.setAttribute("aria-expanded", "false");
+    profileDropdown.classList.add(
+      "opacity-0",
+      "transition-opacity",
+      "duration-200",
+      "ease-out"
+    );
+
+    const hideProfile = () => {
+      profileBtn.setAttribute("aria-expanded", "false");
+      profileDropdown.classList.add("opacity-0");
+      setTimeout(() => profileDropdown.classList.add("hidden"), 200);
+    };
+    const showProfile = () => {
+      profileDropdown.classList.remove("hidden");
+      requestAnimationFrame(() =>
+        profileDropdown.classList.remove("opacity-0")
+      );
+    };
+
+    const toggleProfile = () => {
+      const ex = profileBtn.getAttribute("aria-expanded") === "true";
+      profileBtn.setAttribute("aria-expanded", (!ex).toString());
+      if (!ex) showProfile();
+      else hideProfile();
+    };
+
+    profileBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleProfile();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") hideProfile();
+    });
+    document.addEventListener("click", (e) => {
+      if (profileBtn.getAttribute("aria-expanded") === "true") {
+        const target = e.target as Node | null;
+        if (
+          target &&
+          !profileDropdown.contains(target) &&
+          !profileBtn.contains(target)
+        )
+          hideProfile();
+      }
+    });
+    profileDropdown
+      .querySelectorAll("a")
+      .forEach((a) => a.addEventListener("click", hideProfile));
+  }
+
+  // Efecto scroll
+  const nav = document.getElementById("site-navbar");
+  const applyScrolled = (scrolled: boolean) => {
+    if (!nav) return;
+    nav.classList.remove(
+      "bg-transparent",
+      "border-transparent",
+      "py-4",
+      "md:py-6"
+    );
+    nav.classList.remove(
+      "bg-stone-900/80",
+      "border-white/10",
+      "shadow-md",
+      "backdrop-blur-sm",
+      "py-3",
+      "md:py-4"
+    );
+    if (scrolled) {
+      nav.classList.add(
+        "bg-stone-900/80",
+        "border-white/10",
+        "shadow-md",
+        "backdrop-blur-sm",
+        "py-3",
+        "md:py-4",
+        "is-scrolled"
+      );
+    } else {
+      nav.classList.add(
+        "bg-transparent",
+        "border-transparent",
+        "py-4",
+        "md:py-6"
+      );
+      nav.classList.remove("is-scrolled");
+    }
+  };
+  applyScrolled(window.scrollY > 10);
+  window.addEventListener(
+    "scroll",
+    () => applyScrolled(window.scrollY > 10),
+    {
+      passive: true,
+    }
+  );
+
+  // Toggle submenú Admisiones en mobile
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileSub = document.getElementById("mobile-sub-admisiones");
+  const mobileBack = document.getElementById("admisiones-back");
+
+  if (mobileMenu && mobileSub) {
+    // Prevenir TODOS los eventos de scroll/movimiento en el submenú
+    const preventSubMenuScroll = (e: Event) => {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    };
+
+    // detectar click en el link "Admisiones"
+    mobileMenu
+      .querySelectorAll('[data-mobile-link="admisiones"]')
+      .forEach((lnk) => {
+        lnk.addEventListener("click", (e) => {
+          e.preventDefault();
+          // ocultar menú y mostrar submenú con fade
+          mobileMenu.classList.add("opacity-0");
+          setTimeout(() => {
+            mobileMenu.classList.add("hidden");
+            mobileSub.classList.remove("hidden");
+            // Agregar event listeners AGRESIVOS para prevenir CUALQUIER scroll en el submenú
+            mobileSub.addEventListener('touchmove', preventSubMenuScroll, { passive: false });
+            mobileSub.addEventListener('wheel', preventSubMenuScroll, { passive: false });
+            mobileSub.addEventListener('scroll', preventSubMenuScroll, { passive: false });
+            requestAnimationFrame(() =>
+              mobileSub.classList.remove("opacity-0")
+            );
+          }, 200);
+          // El scroll del body ya está bloqueado por el menú principal
+        });
+      });
+
+    // regresar (Back)
+    mobileBack?.addEventListener("click", (e) => {
+      e.preventDefault();
+      mobileSub.classList.add("opacity-0");
+      // Remover TODOS los event listeners del submenú
+      mobileSub.removeEventListener('touchmove', preventSubMenuScroll);
+      mobileSub.removeEventListener('wheel', preventSubMenuScroll);
+      mobileSub.removeEventListener('scroll', preventSubMenuScroll);
+      setTimeout(() => {
+        mobileSub.classList.add("hidden");
+        mobileMenu.classList.remove("hidden");
+        requestAnimationFrame(() =>
+          mobileMenu.classList.remove("opacity-0")
+        );
+      }, 200);
+      // El scroll del body sigue bloqueado porque el menú principal sigue abierto
+    });
+
+    // Cerrar menú al hacer clic en enlaces del submenú
+    mobileSub.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        mobileSub.classList.add("opacity-0");
+        // Remover TODOS los event listeners del submenú
+        mobileSub.removeEventListener('touchmove', preventSubMenuScroll);
+        mobileSub.removeEventListener('wheel', preventSubMenuScroll);
+        mobileSub.removeEventListener('scroll', preventSubMenuScroll);
+        // restaurar scroll del body
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        // remover event listeners de prevención de scroll del menú principal
+        document.removeEventListener('touchmove', preventDefault);
+        document.removeEventListener('wheel', preventDefault, { passive: false } as any);
+        window.scrollTo(0, scrollPosition);
+        setTimeout(() => {
+          mobileSub.classList.add("hidden");
+          mobileMenu.classList.add("hidden");
+        }, 200);
+      });
+    });
+
+    // cerrar submenú si se cierra el menú principal (ESC o click fuera)
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        const isSubMenuVisible = !mobileSub.classList.contains("hidden");
+        if (isSubMenuVisible) {
+          mobileSub.classList.add("opacity-0");
+          // Remover TODOS los event listeners del submenú
+          mobileSub.removeEventListener('touchmove', preventSubMenuScroll);
+          mobileSub.removeEventListener('wheel', preventSubMenuScroll);
+          mobileSub.removeEventListener('scroll', preventSubMenuScroll);
+          mobileMenu.classList.add("hidden");
+          // restaurar scroll del body
+          document.body.style.position = '';
+          document.body.style.top = '';
+          document.body.style.width = '';
+          document.body.style.overflow = '';
+          // remover event listeners de prevención de scroll del menú principal
+          document.removeEventListener('touchmove', preventDefault);
+          document.removeEventListener('wheel', preventDefault, { passive: false } as any);
+          window.scrollTo(0, scrollPosition);
+          setTimeout(() => mobileSub.classList.add("hidden"), 200);
+        }
+      }
+    });
+  }
+
+  // Toggle dropdown de Admisiones (desktop) con fade
+  const desktopLinksContainer = document.querySelector(
+    ".ml-10.flex.items-center.space-x-4"
+  ) as HTMLElement | null;
+  const admDropdown = document.getElementById("admisiones-dropdown");
+  if (desktopLinksContainer && admDropdown) {
+    const admLink = desktopLinksContainer.querySelector(
+      '[data-desktop-link="admisiones"]'
+    ) as HTMLElement | null;
+
+    const hideAdm = () => {
+      admDropdown.classList.add("opacity-0");
+      setTimeout(() => admDropdown.classList.add("hidden"), 200);
+    };
+    const showAdm = () => {
+      admDropdown.classList.remove("hidden");
+      requestAnimationFrame(() =>
+        admDropdown.classList.remove("opacity-0")
+      );
+    };
+    const toggleAdm = () => {
+      const isHidden = admDropdown.classList.contains("hidden");
+      if (isHidden) showAdm();
+      else hideAdm();
+    };
+
+    admLink?.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleAdm();
+    });
+    document.addEventListener("click", (e) => {
+      const target = e.target as Node | null;
+      if (!target) return;
+      if (!admDropdown.contains(target) && !admLink?.contains(target))
+        hideAdm();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") hideAdm();
+    });
+  }
+</script>
+
+<style>
+  .is-scrolled .logo-icon {
+    filter: invert(1);
+    opacity: 0.8;
+  }
+</style>
