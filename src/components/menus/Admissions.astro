@@ -1,6 +1,6 @@
 ---
 import Title from "../ui/Title.astro";
-import { GraduationCap, BookOpen, MessageSquare, FileAudio, Library } from "lucide-astro";
+import { GraduationCap, BookOpen, MessageSquare, FileAudio, Library, ClipboardList } from "lucide-astro";
 ---
 
 <!-- Menú compartido de Admisiones: MODELS y TOOLS -->
@@ -10,7 +10,24 @@ import { GraduationCap, BookOpen, MessageSquare, FileAudio, Library } from "luci
     <Title tag="h6" color="white">Admisiones 2026</Title>
     <div class="space-y-3">
       <a
-        href="#"
+        href="https://www.uanl.mx/tramites/registro-de-aspirantes-bachillerato/"
+        class="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-900 hover:bg-gray-100 transition-colors duration-150"
+      >
+        <span class="inline-flex items-center gap-3">
+          <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full ring-1 ring-stone-300 text-stone-500 bg-white">
+            <ClipboardList class="h-4 w-4" aria-hidden="true" />
+          </span>
+          <span class="flex flex-col">
+            <span class="font-medium">Proceso de Asignación de Espacios</span>
+            <span class="text-xs opacity-80 font-normal">
+              de la Secretaría de Educación.
+            </span>
+          </span>
+        </span>
+      </a>
+
+      <a
+        href="/preparatoria"
         class="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-900 hover:bg-gray-100 transition-colors duration-150"
       >
         <span class="inline-flex items-center gap-3">
@@ -18,7 +35,7 @@ import { GraduationCap, BookOpen, MessageSquare, FileAudio, Library } from "luci
             <GraduationCap class="h-4 w-4" aria-hidden="true" />
           </span>
           <span class="flex flex-col">
-            <span class="font-medium">PREPARATORIA</span>
+            <span class="font-medium">Preparatoria</span>
             <span class="text-xs opacity-80 font-normal">
               Únete a nuestra Preparatoria y potencia tu futuro.
             </span>
@@ -26,7 +43,7 @@ import { GraduationCap, BookOpen, MessageSquare, FileAudio, Library } from "luci
         </span>
       </a>
       <a
-        href="#"
+        href="/ues"
         class="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-900 hover:bg-gray-100 transition-colors duration-150"
       >
         <span class="inline-flex items-center gap-3">
@@ -34,7 +51,7 @@ import { GraduationCap, BookOpen, MessageSquare, FileAudio, Library } from "luci
             <BookOpen class="h-4 w-4" aria-hidden="true" />
           </span>
           <span class="flex flex-col">
-            <span class="font-medium">ESTUDIOS SUPERIORES</span>
+            <span class="font-medium">Estudios Superiores</span>
             <span class="text-xs opacity-80 font-normal">
               Da el siguiente paso con nuestros Estudios Superiores.
             </span>
@@ -53,7 +70,7 @@ import { GraduationCap, BookOpen, MessageSquare, FileAudio, Library } from "luci
     <Title tag="h6" color="white">Herramientas</Title>
     <div class="space-y-3">
       <a
-        href="#"
+        href="https://buscador.becasbenitojuarez.gob.mx/escuelas-buems/"
         class="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-900 hover:bg-gray-100 transition-colors duration-150"
       >
         <span class="inline-flex items-center gap-3">
@@ -70,7 +87,7 @@ import { GraduationCap, BookOpen, MessageSquare, FileAudio, Library } from "luci
       </a>
 
       <a
-        href="#"
+        href="https://www.imss.gob.mx/faq/seguro-estudiantes"
         class="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-900 hover:bg-gray-100 transition-colors duration-150"
       >
         <span class="inline-flex items-center gap-3">
@@ -87,7 +104,7 @@ import { GraduationCap, BookOpen, MessageSquare, FileAudio, Library } from "luci
       </a>
 
       <a
-        href="#"
+        href="https://www.nl.gob.mx/es/boletines/anuncian-samuel-y-mariana-ayudamos-los-estudiantes-tarifa-preferencial-para-estudiantes"
         class="block rounded-md px-3 py-2 text-base font-medium text-white hover:text-gray-900 hover:bg-gray-100 transition-colors duration-150"
       >
         <span class="inline-flex items-center gap-3">
@@ -95,13 +112,14 @@ import { GraduationCap, BookOpen, MessageSquare, FileAudio, Library } from "luci
             <Library class="h-4 w-4" aria-hidden="true" />
           </span>
           <span class="flex flex-col">
-            <span class="font-medium">Movilidad Académica</span>
+            <span class="font-medium">Ayudemos a los Estudiantes</span>
             <span class="text-xs opacity-80 font-normal">
-              Programas para intercambios y cursos.
+              Tarifa preferencial de estudiantes para transporte público.
             </span>
           </span>
         </span>
       </a>
+
     </div>
   </div>
 </div>
