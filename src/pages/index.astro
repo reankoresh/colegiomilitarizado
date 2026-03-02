@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
+import UANL from "../components/UANL.astro";
 import Carousel from "../components/sections/Carousel.astro";
 import Mision from "../components/sections/Mision.astro";
 import Benefits from "../components/sections/Benefits.astro";
@@ -46,6 +47,7 @@ const slides = [
 
 <Layout>
   <Navbar />
+  <UANL />
   <Carousel slides={slides} />
   <Mision />
   <Benefits />
