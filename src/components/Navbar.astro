@@ -106,7 +106,7 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
   </div>
 
   <div
-    class="md:hidden hidden opacity-0 transition-opacity duration-200 ease-out bg-stone-900/80 backdrop-blur-sm fixed inset-0 z-40 overflow-hidden"
+    class="md:hidden hidden opacity-0 transition-opacity duration-150 ease-out bg-stone-900/80 backdrop-blur-sm fixed inset-0 z-40 overflow-hidden"
     id="mobile-menu"
   >
     <!-- Botón cerrar dentro del menú -->
@@ -161,6 +161,7 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
 <script>
   // Variable para guardar posición de scroll
   let scrollPosition = 0;
+  let isMobileOverlayOpen = false;
   
   // Función para prevenir scroll y touch
   const preventDefault = (e: Event) => {
@@ -173,6 +174,50 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
   const menu = document.getElementById("mobile-menu");
   const closeBtn = document.getElementById("close-mobile-menu");
 
+  const setMobileOverlayNavbarState = (isOpen: boolean) => {
+    const navEl = document.getElementById("site-navbar");
+    if (!navEl) return;
+
+    isMobileOverlayOpen = isOpen;
+
+    // Evitar transición del navbar durante toggle del overlay mobile
+    navEl.classList.add("transition-none");
+    requestAnimationFrame(() => navEl.classList.remove("transition-none"));
+
+    navEl.classList.remove(
+      "bg-transparent",
+      "border-transparent",
+      "bg-stone-900/80",
+      "border-white/10",
+      "shadow-md",
+      "backdrop-blur-sm",
+      "is-scrolled",
+      "py-3",
+      "md:py-4",
+      "py-4",
+      "md:py-6"
+    );
+
+    if (isOpen) {
+      navEl.classList.add("bg-transparent", "border-transparent", "py-4", "md:py-6");
+      return;
+    }
+
+    if (window.scrollY > 10) {
+      navEl.classList.add(
+        "bg-stone-900/80",
+        "border-white/10",
+        "shadow-md",
+        "backdrop-blur-sm",
+        "py-3",
+        "md:py-4",
+        "is-scrolled"
+      );
+    } else {
+      navEl.classList.add("bg-transparent", "border-transparent", "py-4", "md:py-6");
+    }
+  };
+
   if (btn && menu) {
     btn.setAttribute("aria-expanded", "false");
 
@@ -182,6 +227,7 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
     const closeMenu = () => {
       btn.setAttribute("aria-expanded", "false");
       menu.classList.add("opacity-0");
+      setMobileOverlayNavbarState(false);
       // restaurar scroll del body
       document.body.style.position = '';
       document.body.style.top = '';
@@ -198,6 +244,7 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
     const openMenu = () => {
       btn.setAttribute("aria-expanded", "true");
       menu.classList.remove("hidden");
+      setMobileOverlayNavbarState(true);
       // guardar posición actual de scroll
       scrollPosition = window.scrollY;
       // bloquear scroll del body y fijar posición
@@ -208,7 +255,7 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
       // prevenir scroll con touch y wheel
       document.addEventListener('touchmove', preventDefault, { passive: false });
       document.addEventListener('wheel', preventDefault, { passive: false });
-      requestAnimationFrame(() => menu.classList.remove("opacity-0"));
+      menu.classList.remove("opacity-0");
     };
 
     const toggleMenu = () => {
@@ -229,7 +276,13 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
     
     menu
       .querySelectorAll("a")
-      .forEach((a) => a.addEventListener("click", closeMenu));
+      .forEach((a) =>
+        a.addEventListener("click", () => {
+          const isAdmissionsLink =
+            a.getAttribute("data-mobile-link") === "admisiones";
+          if (!isAdmissionsLink) closeMenu();
+        })
+      );
   }
 
   // Dropdown perfil (añadir fade)
@@ -290,6 +343,19 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
   const nav = document.getElementById("site-navbar");
   const applyScrolled = (scrolled: boolean) => {
     if (!nav) return;
+    if (isMobileOverlayOpen) {
+      nav.classList.remove(
+        "bg-stone-900/80",
+        "border-white/10",
+        "shadow-md",
+        "backdrop-blur-sm",
+        "is-scrolled",
+        "py-3",
+        "md:py-4"
+      );
+      nav.classList.add("bg-transparent", "border-transparent", "py-4", "md:py-6");
+      return;
+    }
     nav.classList.remove(
       "bg-transparent",
       "border-transparent",
@@ -352,18 +418,18 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
       .forEach((lnk) => {
         lnk.addEventListener("click", (e) => {
           e.preventDefault();
-          // ocultar menú y mostrar submenú con fade
+          // transición en paralelo: menú principal sale mientras submenú entra
           mobileMenu.classList.add("opacity-0");
+          mobileSub.classList.remove("hidden");
+          // Agregar event listeners AGRESIVOS para prevenir CUALQUIER scroll en el submenú
+          mobileSub.addEventListener('touchmove', preventSubMenuScroll, { passive: false });
+          mobileSub.addEventListener('wheel', preventSubMenuScroll, { passive: false });
+          mobileSub.addEventListener('scroll', preventSubMenuScroll, { passive: false });
+          requestAnimationFrame(() =>
+            mobileSub.classList.remove("opacity-0")
+          );
           setTimeout(() => {
             mobileMenu.classList.add("hidden");
-            mobileSub.classList.remove("hidden");
-            // Agregar event listeners AGRESIVOS para prevenir CUALQUIER scroll en el submenú
-            mobileSub.addEventListener('touchmove', preventSubMenuScroll, { passive: false });
-            mobileSub.addEventListener('wheel', preventSubMenuScroll, { passive: false });
-            mobileSub.addEventListener('scroll', preventSubMenuScroll, { passive: false });
-            requestAnimationFrame(() =>
-              mobileSub.classList.remove("opacity-0")
-            );
           }, 200);
           // El scroll del body ya está bloqueado por el menú principal
         });
@@ -372,17 +438,18 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
     // regresar (Back)
     mobileBack?.addEventListener("click", (e) => {
       e.preventDefault();
+      mobileMenu.classList.remove("hidden");
+      mobileMenu.classList.add("opacity-0");
       mobileSub.classList.add("opacity-0");
       // Remover TODOS los event listeners del submenú
       mobileSub.removeEventListener('touchmove', preventSubMenuScroll);
       mobileSub.removeEventListener('wheel', preventSubMenuScroll);
       mobileSub.removeEventListener('scroll', preventSubMenuScroll);
+      requestAnimationFrame(() =>
+        mobileMenu.classList.remove("opacity-0")
+      );
       setTimeout(() => {
         mobileSub.classList.add("hidden");
-        mobileMenu.classList.remove("hidden");
-        requestAnimationFrame(() =>
-          mobileMenu.classList.remove("opacity-0")
-        );
       }, 200);
       // El scroll del body sigue bloqueado porque el menú principal sigue abierto
     });
@@ -391,6 +458,7 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
     mobileSub.querySelectorAll("a").forEach((a) => {
       a.addEventListener("click", () => {
         mobileSub.classList.add("opacity-0");
+        setMobileOverlayNavbarState(false);
         // Remover TODOS los event listeners del submenú
         mobileSub.removeEventListener('touchmove', preventSubMenuScroll);
         mobileSub.removeEventListener('wheel', preventSubMenuScroll);
@@ -422,6 +490,7 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
           mobileSub.removeEventListener('wheel', preventSubMenuScroll);
           mobileSub.removeEventListener('scroll', preventSubMenuScroll);
           mobileMenu.classList.add("hidden");
+          setMobileOverlayNavbarState(false);
           // restaurar scroll del body
           document.body.style.position = '';
           document.body.style.top = '';
