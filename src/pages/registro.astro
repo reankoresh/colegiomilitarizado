@@ -1,0 +1,298 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Title from "../components/ui/Title.astro";
+
+const instituciones = [
+  "Colegio de Estudios Científicos y Tecnológicos (CECYTE)",
+  'Escuela Preparatoria Técnica "General Emiliano Zapata" (PEZ)',
+  "Dirección General de Educación Tecnológica Industrial y de Servicios (DGETI)",
+  "Dirección General de Educación Tecnológica Agropecuaria y Ciencias del Mar (DGETAYCM)",
+  "Colegio Nacional de Educación Profesional Técnica (CONALEP)",
+  'Colegio Militarizado "General Mariano Escobedo" (CM)',
+  "Centro de Educación Artística Alfonso Reyes (CEDART)",
+  "Universidad Autónoma de Nuevo León (UANL)",
+  "Secretaría de Educación del Estado de Nuevo León (SE)",
+];
+
+const documentosRelacionados = [
+  {
+    label: "Directorio de escuelas participantes",
+    href: "https://www.uanl.mx/wp-content/uploads/2018/10/Directorio-PAE-2026-Feb_v21.pdf",
+  },
+  {
+    label: "Guía para aspirantes al Nivel Medio Superior",
+    href: "https://www.uanl.mx/wp-content/uploads/2018/10/Guia-para-aspirantes_-2026_v7.pdf",
+  },
+  {
+    label: "Solicitud de registro (formato PDF)",
+    href: "https://www.uanl.mx/wp-content/uploads/2018/10/RC-IN-011-Solicitud-de-registro-01-02-26-sep.pdf",
+  },
+  {
+    label: "Carta de consentimiento del aspirante (PDF)",
+    href: "https://www.uanl.mx/wp-content/uploads/2018/10/RC-IN-012-Carta-de-consentimiento-del-aspirante-PAE-SENL_01-02-26.pdf",
+  },
+  {
+    label: "Identificaciones válidas",
+    href: "https://www.uanl.mx/wp-content/uploads/2018/10/Identificaciones-validas-2026-v1.pdf",
+  },
+  {
+    label: "UANL Bachilleratos Bilingües",
+    href: "https://www.uanl.mx/wp-content/uploads/2018/10/UANL-Bachilleratos-Bilingues-2026-v1-1.pdf",
+  },
+  {
+    label: "UANL Aportaciones de primer ingreso",
+    href: "https://www.uanl.mx/wp-content/uploads/2018/10/UANL-aportaciones-de-primer-ingreso-2026-v1-1.pdf",
+  },
+  {
+    label: "UANL Información para extranjeros",
+    href: "https://www.uanl.mx/wp-content/uploads/2019/02/Informacion-para-extranjeros-2025-v2.pdf",
+  },
+  {
+    label: "Programa de inclusión de estudiantes con discapacidad",
+    href: "https://www.uanl.mx/wp-content/uploads/2018/10/Informacion-para-personas-con-discapacidad-v2.pdf",
+  },
+];
+---
+
+<Layout>
+  <Navbar />
+
+  <main class="min-h-dvh bg-linear-to-br from-stone-950 via-stone-900 to-stone-950 pt-32 pb-20 text-white **:text-white [&_a]:text-white [&_a:hover]:text-white [&_a:visited]:text-white [&_li::marker]:text-white">
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm md:p-10">
+        <Title color="white" tag="h2" class="text-center">Registro de aspirantes | Junio 2026</Title>
+        <p class="mt-4 text-center text-white!">
+          Proceso de Asignación de Espacios en la Educación Media Superior del Estado de Nuevo León.
+        </p>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm">
+            <p class="text-sm text-white!">Período oficial de registro</p>
+            <p class="mt-1 font-semibold text-white!">13 de marzo (15:00) al 30 de abril de 2026 (23:59)</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm">
+            <p class="text-sm text-white!">Aplicación del diagnóstico</p>
+            <p class="mt-1 font-semibold text-white!">Sábado 6 de junio de 2026</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm">
+            <p class="text-sm text-white!">Publicación de resultados</p>
+            <p class="mt-1 font-semibold text-white!">A partir del 29 de junio de 2026</p>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="https://www.uanl.mx/tramites/registro-de-aspirantes-bachillerato/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-full bg-indigo-500 px-5 py-2.5 text-sm font-medium text-white"
+          >
+            Ir a convocatoria oficial
+          </a>
+          <a
+            href="http://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/loginaspirante01.htm"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-full border border-white/20 bg-stone-900/70 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm"
+          >
+            Captura de encuestas
+          </a>
+          <a
+            href="https://www.gob.mx/curp/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-full border border-white/20 bg-stone-900/70 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm"
+          >
+            Consulta CURP oficial
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-6 lg:grid-cols-3">
+        <article class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm lg:col-span-2">
+          <Title color="white" tag="h3">Instituciones convocantes</Title>
+          <p class="mt-3 text-white!">
+            El Sistema Público de Educación Media Superior del Estado de Nuevo León, en conjunto con las instituciones
+            participantes, convoca a las y los interesados a iniciar estudios de Educación Media Superior en agosto de 2026.
+          </p>
+          <ul class="mt-4 space-y-2 text-white">
+            {instituciones.map((institucion) => (
+              <li class="rounded-xl border border-white/10 bg-stone-900/70 px-4 py-2 backdrop-blur-sm">• {institucion}</li>
+            ))}
+          </ul>
+        </article>
+
+        <aside class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm">
+          <Title color="white" tag="h4">Datos clave</Title>
+          <ul class="mt-4 space-y-3 text-white">
+            <li><strong>Modalidad:</strong> Registro en línea.</li>
+            <li><strong>Costo:</strong> Aportación de $636.00 MXN.</li>
+            <li><strong>Diagnóstico:</strong> 228 reactivos (verbal, numérico y conocimientos de secundaria).</li>
+            <li><strong>Sede/horario:</strong> Según pase de ingreso.</li>
+            <li><strong>Confirmación:</strong> Es importante confirmar el lugar asignado.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm md:p-8">
+        <Title color="white" tag="h3">Bases de la convocatoria</Title>
+
+        <div class="mt-6 space-y-6">
+          <article class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm md:p-5">
+            <Title color="white" tag="h5">1a. Escuelas participantes</Title>
+            <ul class="mt-3 list-disc space-y-1 pl-5 text-white">
+              <li>Los planteles disponibles son los del directorio oficial de escuelas participantes.</li>
+              <li>Para información específica de un plantel, se recomienda acudir directamente a la escuela elegida.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm md:p-5">
+            <Title color="white" tag="h5">2a. Registro</Title>
+            <ul class="mt-3 list-disc space-y-1 pl-5 text-white">
+              <li>Periodo oficial: del 13-mar-2026 (15:00) al 30-abr-2026 (23:59).</li>
+              <li>El registro es por internet y la información debe ser verídica.</li>
+              <li>Tener secundaria concluida o estar por concluirla al momento del registro.</li>
+              <li>Llenar solicitud de registro y carta de consentimiento.</li>
+              <li>Contar con CURP oficial e identificación con fotografía válida.</li>
+              <li>Cubrir la aportación de $636.00 MXN.</li>
+              <li>Completar todos los pasos dentro de las fechas establecidas.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm md:p-5">
+            <Title color="white" tag="h5">3a. Procedimiento para el registro</Title>
+            <ol class="mt-3 list-decimal space-y-1 pl-5 text-white">
+              <li>Ingresar a UANL → Aspirantes → Registro de aspirantes junio 2026.</li>
+              <li>Capturar datos básicos para descargar hoja de pre registro (con número de registro y contraseña).</li>
+              <li>Entrar a captura de encuestas para completar datos personales y socioeconómicos.</li>
+              <li>Cargar fotografía, identificación, carta de consentimiento y CURP.</li>
+              <li>Realizar pago en la institución bancaria indicada en la hoja de pre registro.</li>
+              <li>Regresar a captura de encuestas para descargar pase de ingreso al diagnóstico.</li>
+            </ol>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm md:p-5">
+            <Title color="white" tag="h5">4a. Diagnóstico</Title>
+            <ul class="mt-3 list-disc space-y-1 pl-5 text-white">
+              <li>Diagnóstico presencial: sábado 6 de junio de 2026.</li>
+              <li>Consta de 228 reactivos de opción múltiple.</li>
+              <li>Guía oficial gratuita disponible en documentos relacionados.</li>
+              <li>No hay cambios de fecha ni horario respecto al pase asignado.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm md:p-5">
+            <Title color="white" tag="h5">5a. Asignación de aspirantes</Title>
+            <ul class="mt-3 list-disc space-y-1 pl-5 text-white">
+              <li>La asignación considera preferencias de plantel y puntaje obtenido.</li>
+              <li>Si la demanda supera cupo, se prioriza a quienes obtengan mayor puntaje.</li>
+              <li>Si no se asigna en preferencia inicial, se analiza el resto de opciones registradas.</li>
+              <li>Si no hay lugar en opciones elegidas, se asigna espacio en plantel con disponibilidad.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm md:p-5">
+            <Title color="white" tag="h5">6a. Publicación de resultados</Title>
+            <ul class="mt-3 list-disc space-y-1 pl-5 text-white">
+              <li>Resultados publicados a partir del 29 de junio de 2026.</li>
+              <li>La carta de resultado se descarga con número de registro y contraseña.</li>
+              <li>La carta indica asignación e instrucciones para inscripción.</li>
+              <li>Los lugares no confirmados pueden reasignarse.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm md:p-5">
+            <Title color="white" tag="h5">7a. Inscripción</Title>
+            <ul class="mt-3 list-disc space-y-1 pl-5 text-white">
+              <li>Para inscripción definitiva se requiere certificado de secundaria.</li>
+              <li>También aplican requisitos particulares del plantel asignado.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm md:p-5">
+            <Title color="white" tag="h5">8a. Disposiciones transitorias</Title>
+            <ul class="mt-3 list-disc space-y-1 pl-5 text-white">
+              <li>El proceso corresponde al ingreso para iniciar clases en agosto de 2026.</li>
+              <li>Actos fraudulentos quedan sujetos a la normatividad aplicable.</li>
+              <li>Casos no previstos serán resueltos por el Sistema Público EMS de Nuevo León.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-6 lg:grid-cols-2">
+        <article class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm">
+          <Title color="white" tag="h4">Enlaces relacionados</Title>
+          <ul class="mt-4 space-y-2 text-white">
+            <li>
+                <a href="http://deimos.dgi.uanl.mx/cgi-bin/wspd_cgi.sh/cecoesms02.htm" target="_blank" rel="noopener noreferrer" class="text-white">
+                Consulta de Escuelas Secundarias
+              </a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/Concurso.Ingreso.Uanl" target="_blank" rel="noopener noreferrer" class="text-white">
+                Avisos oficiales en Facebook
+              </a>
+            </li>
+            <li>
+                <a href="http://centrodeayuda.uanl.mx/" target="_blank" rel="noopener noreferrer" class="text-white">
+                Centro de Ayuda UANL
+              </a>
+            </li>
+            <li>
+                <a href="https://serviciosdigitales.imss.gob.mx/gestionAsegurados-web-externo/asignacionNSS" target="_blank" rel="noopener noreferrer" class="text-white">
+                Consulta del Número de IMSS
+              </a>
+            </li>
+          </ul>
+        </article>
+
+        <article class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm">
+          <Title color="white" tag="h4">Contacto oficial</Title>
+          <ul class="mt-4 space-y-2 text-white">
+            <li><strong>Dirección:</strong> Módulo de información del Centro de Evaluaciones UANL, Ciudad Universitaria, San Nicolás de los Garza, Nuevo León.</li>
+            <li><strong>Horario:</strong> Lunes a viernes de 8:00 a 15:00 horas.</li>
+            <li><strong>Correo:</strong> <a class="text-white" href="mailto:registro.prepas@uanl.mx">registro.prepas@uanl.mx</a></li>
+            <li><strong>Teléfonos:</strong> +52 81 8329 4069, +52 81 1340 4435, +52 81 1340 4436, +52 81 1340 4437.</li>
+            <li><strong>WhatsApp:</strong> <a class="text-white" href="https://wa.me/528111259702" target="_blank" rel="noopener noreferrer">8111259702</a></li>
+            <li><strong>Twitter:</strong> @aspirantes_uanl</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm md:p-8">
+        <Title color="white" tag="h4">Documentos relacionados</Title>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          {documentosRelacionados.map((doc) => (
+            <a
+              href={doc.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-xl border border-white/10 bg-stone-900/70 px-4 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-stone-800/80"
+            >
+              {doc.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 text-white shadow-md backdrop-blur-sm">
+        <p class="text-white!">
+          <strong>Responsable:</strong> Centro de Evaluaciones UANL · <strong>Última actualización oficial:</strong> 13 de febrero de 2026.
+          Revisa siempre la convocatoria oficial para confirmar cambios de fechas, requisitos o documentación.
+        </p>
+      </div>
+    </section>
+  </main>
+</Layout>
