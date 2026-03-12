@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import Title from "../ui/Title.astro";
 
 export interface SlideItem {
-  src: ImageMetadata;
+  src: ImageMetadata | string;
   alt: string;
   title: string;
   description: string;
@@ -12,9 +12,10 @@ export interface SlideItem {
 
 export interface Props {
   slides: SlideItem[];
+  overlayClass?: string;
 }
 
-const { slides } = Astro.props;
+const { slides, overlayClass = "bg-black/50" } = Astro.props;
 
 // Generar CSS dinámico para animaciones
 const slideDuration = 4.5; // segundos por slide
@@ -34,20 +35,31 @@ const totalDuration = slides.length * slideDuration;
           class={`carousel-slide absolute w-full h-full transition-opacity duration-300 ${index === 0 ? "opacity-100" : "opacity-0"}`}
           data-slide-index={index}
         >
-          <Image
-            src={slide.src}
-            alt={slide.alt}
-            class="w-full h-full object-cover"
-            loading="eager"
-            inferSize={true}
-          />
-          <div class="absolute inset-0 bg-black/50" />
+          {
+            typeof slide.src === "string" ? (
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+            ) : (
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                class="w-full h-full object-cover"
+                loading="eager"
+                inferSize={true}
+              />
+            )
+          }
+          <div class={`absolute inset-0 ${overlayClass}`} />
           <div class="absolute inset-0 flex items-center justify-center text-center px-4">
             <div class="w-11/12 max-w-6xl">
               <Title tag="h1" color="white" class="text-[2.1rem] md:text-7xl">
                 {slide.title}
               </Title>
-              <Title tag="h5" color="white">
+              <Title tag="h5" color="white" class="mt-3 md:mt-4">
                 {slide.description}
               </Title>
             </div>

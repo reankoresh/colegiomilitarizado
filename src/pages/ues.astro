@@ -1,1 +1,63 @@
-<h1>Unidad de Estudios Superiores</h1>
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Carousel from "../components/sections/Carousel.astro";
+import UesPrograms from "../components/sections/UesPrograms.astro";
+import slide1 from "../assets/images/carousel/ues/slide1.jpg";
+import slide2 from "../assets/images/carousel/ues/slide2.png";
+import slide3 from "../assets/images/carousel/ues/slide3.jpg";
+import slide4 from "../assets/images/carousel/ues/slide4.png";
+import slide5 from "../assets/images/carousel/ues/slide5.jpg";
+import slide6 from "../assets/images/carousel/ues/slide6.jpg";
+
+const slides = [
+  {
+    src: slide1,
+    alt: "Slide UES 1",
+    title: "Ingeniería en Logística",
+    description:
+      "Gestiona el flujo de materiales y servicios desde el proveedor hasta el cliente.",
+  },
+  {
+    src: slide2,
+    alt: "Slide UES 2",
+    title: "Ingeniería en Desarrollo Sustentable",
+    description:
+      "Evalúa recursos naturales y diseña modelos de negocio con enfoque responsable.",
+  },
+  {
+    src: slide3,
+    alt: "Slide UES 3",
+    title: "Ingeniería en Seguridad Informática",
+    description:
+      "Evalúa sistemas y redes, y diseña infraestructura para soluciones tecnológicas.",
+  },
+  {
+    src: slide4,
+    alt: "Slide UES 4",
+    title: "Cadenas de suministro eficientes",
+    description:
+      "Optimiza resguardo de productos, tiempos de entrega y costos operativos.",
+  },
+  {
+    src: slide5,
+    alt: "Slide UES 5",
+    title: "Energía y procesos productivos",
+    description:
+      "Impulsa el uso eficiente de recursos naturales, energéticos y su distribución.",
+  },
+  {
+    src: slide6,
+    alt: "Slide UES 6",
+    title: "Infraestructura y ciberseguridad",
+    description:
+      "Fortalece la protección de sistemas, dispositivos y redes en entornos reales.",
+  },
+];
+---
+
+<Layout>
+  <Navbar />
+  <Carousel slides={slides} />
+  <UesPrograms />
+</Layout>

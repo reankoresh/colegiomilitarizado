@@ -1,0 +1,36 @@
+---
+import Title from "../ui/Title.astro";
+
+export interface Props {
+  title: string;
+  points: string[];
+  route: string;
+  ctaLabel?: string;
+}
+
+const {
+  title,
+  points,
+  route,
+  ctaLabel = "Ver más",
+} = Astro.props;
+---
+
+<article class="rounded-xl border border-stone-200 bg-white p-6 md:p-8 shadow-sm">
+  <Title tag="h3" class="mb-4">{title}</Title>
+
+  <ul class="space-y-3 mb-6">
+    {
+      points.map((point) => (
+        <li class="text-stone-700 leading-7">• {point}</li>
+      ))
+    }
+  </ul>
+
+  <a
+    href={route}
+    class="inline-flex items-center justify-center rounded-lg bg-orange-500 px-5 py-2.5 text-white no-underline hover:bg-orange-600 transition-colors duration-200"
+  >
+    {ctaLabel}
+  </a>
+</article>
