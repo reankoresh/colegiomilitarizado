@@ -1,0 +1,352 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+---
+
+<Layout>
+  <Navbar />
+
+  <main class="planteles-page">
+    <section class="poster" aria-label="Conoce nuestros planteles">
+      <div class="left-panel">
+        <h1 class="title">¡Conoce nuestros planteles!</h1>
+
+        <div class="campus-grid">
+          <ol class="campus-list" start="1">
+            <li>
+              <strong>San Bernabé</strong>
+              <span>Pról. Aztlán No. 9610, col. San Bernabé VII sector, Monterrey, N.L.</span>
+            </li>
+            <li>
+              <strong>San Nicolás</strong>
+              <span>S/N Bosques del Nogalar, San Nicolás de los Garza, N.L.</span>
+            </li>
+            <li>
+              <strong>Montemorelos</strong>
+              <span>Carretera Camino las adjuntas S/N, Col. Bugambilias, C.P. 67640.</span>
+            </li>
+            <li>
+              <strong>Apodaca</strong>
+              <span>Interior del Campo Militar N°7-A Km 1.5, Apodaca, N.L.</span>
+            </li>
+            <li>
+              <strong>García</strong>
+              <span>Libramiento Noreste y Abraham Lincoln, Col. Mitras Poniente.</span>
+            </li>
+            <li>
+              <strong>Escobedo</strong>
+              <span>Av. Sendero y Av. Raúl Caballero, General Escobedo, N.L.</span>
+            </li>
+          </ol>
+
+          <ol class="campus-list" start="7">
+            <li>
+              <strong>Pesquería</strong>
+              <span>Calle perimetral centro 805, Col. Colinas del Aeropuerto.</span>
+            </li>
+            <li>
+              <strong>Juárez</strong>
+              <span>San Benito 430 Fracc. Santa Mónica 1er sector, Juárez, N.L.</span>
+            </li>
+            <li>
+              <strong>Linares</strong>
+              <span>Alabastro N°350, Col. Pedregal, Linares, N.L.</span>
+            </li>
+            <li>
+              <strong>Galeana</strong>
+              <span>Carretera 18 de Marzo s/n, Ejido Brownsville, Galeana, N.L.</span>
+            </li>
+            <li>
+              <strong>Sabinas Hidalgo</strong>
+              <span>Carretera Nacional México-Laredo N°25, cruce con Gaspar Ibarra.</span>
+            </li>
+          </ol>
+        </div>
+
+        <div class="social">/ ColegioMilitarizadoNL</div>
+      </div>
+
+      <div class="right-panel">
+        <div class="map-wrap">
+          <div class="map-shape"></div>
+
+          <div class="zone z11"></div>
+          <div class="zone z5"></div>
+          <div class="zone z1"></div>
+          <div class="zone z2"></div>
+          <div class="zone z6"></div>
+          <div class="zone z4"></div>
+          <div class="zone z7"></div>
+          <div class="zone z8"></div>
+          <div class="zone z3"></div>
+          <div class="zone z9"></div>
+          <div class="zone z10"></div>
+
+          <span class="metro-core">D.E.S</span>
+
+          <span class="dot n11">11</span>
+          <span class="dot n1">1</span>
+          <span class="dot n2">2</span>
+          <span class="dot n3">3</span>
+          <span class="dot n4">4</span>
+          <span class="dot n5">5</span>
+          <span class="dot n6">6</span>
+          <span class="dot n7">7</span>
+          <span class="dot n8">8</span>
+          <span class="dot n9">9</span>
+          <span class="dot n10">10</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .planteles-page {
+    min-height: 100vh;
+    padding: 0;
+    background: #f4f4f5;
+    display: block;
+    overflow-x: hidden;
+  }
+
+  .poster {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    background: #f68a00;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .left-panel {
+    color: #fff;
+    padding: 9.8rem 5.2% 2.2rem 6%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .right-panel {
+    position: relative;
+    background: #ffffff;
+    overflow: hidden;
+  }
+
+  .title {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(1.45rem, 4.05vw, 4rem);
+    font-weight: 800;
+    line-height: 0.94;
+    letter-spacing: -0.01em;
+    max-width: 82%;
+  }
+
+  .campus-grid {
+    margin-top: 1.45rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem 1.15rem;
+  }
+
+  .campus-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: plantel;
+  }
+
+  .campus-list li {
+    margin: 0 0 0.62rem;
+    counter-increment: plantel;
+    display: grid;
+    gap: 0.12rem;
+  }
+
+  .campus-list li::before {
+    content: counter(plantel) ".";
+    color: #fff;
+    font-size: clamp(0.62rem, 1vw, 1rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .campus-list li strong {
+    color: #fff;
+    font-size: clamp(0.66rem, 1.14vw, 1.15rem);
+    line-height: 1.05;
+    font-weight: 600;
+  }
+
+  .campus-list li span {
+    color: #fff;
+    font-size: clamp(0.44rem, 0.69vw, 0.72rem);
+    line-height: 1.12;
+    opacity: 0.98;
+    max-width: 96%;
+  }
+
+  .social {
+    position: absolute;
+    left: 6%;
+    bottom: 3.9%;
+    font-size: clamp(0.72rem, 1.22vw, 1.26rem);
+    font-weight: 500;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .social::before {
+    content: "f";
+    width: 1.08em;
+    height: 1.08em;
+    border: 0.08em solid #fff;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.16em;
+    line-height: 1;
+  }
+
+  .map-wrap {
+    position: absolute;
+    inset: 6.8rem 6.8% 1.8rem 6.8%;
+    z-index: 1;
+  }
+
+  .map-shape {
+    position: absolute;
+    inset: 0;
+    background: #f2d4b9;
+    clip-path: polygon(
+      47% 1%, 53% 5%, 58% 2%, 61% 3%, 57% 6%,
+      61% 10%, 60% 14%, 64% 16%, 63% 20%, 70% 24%,
+      72% 30%, 83% 34%, 83% 41%, 89% 45%, 88% 54%,
+      82% 58%, 74% 57%, 67% 61%, 66% 67%, 62% 71%,
+      59% 79%, 63% 86%, 61% 93%, 56% 98%, 49% 96%,
+      45% 90%, 38% 87%, 35% 80%, 28% 76%, 23% 69%,
+      18% 62%, 9% 59%, 8% 50%, 12% 45%, 13% 39%,
+      20% 34%, 19% 27%, 16% 21%, 24% 16%, 31% 17%,
+      35% 12%, 40% 9%
+    );
+  }
+
+  .zone {
+    position: absolute;
+    background: #f78b3b;
+    z-index: 2;
+    clip-path: polygon(11% 14%, 44% 6%, 83% 17%, 93% 50%, 65% 85%, 25% 79%, 7% 45%);
+    cursor: pointer;
+    transform-origin: center;
+    transition: transform 220ms ease, filter 220ms ease;
+    will-change: transform;
+  }
+
+  .zone:hover {
+    transform: scale(1.14);
+    filter: brightness(1.03);
+  }
+
+  .z11 { left: 46%; top: 20%; width: 10%; height: 12%; }
+  .z5  { left: 28%; top: 39%; width: 10%; height: 9%; }
+  .z1  { left: 42%; top: 42%; width: 8%; height: 8%; }
+  .z2  { left: 44%; top: 45%; width: 8%; height: 8%; }
+  .z6  { left: 46%; top: 41%; width: 8%; height: 8%; }
+  .z4  { left: 49%; top: 42%; width: 8%; height: 8%; }
+  .z7  { left: 54%; top: 43%; width: 8%; height: 8%; }
+  .z8  { left: 51%; top: 46%; width: 8%; height: 8%; }
+  .z3  { left: 58%; top: 58%; width: 11%; height: 12%; }
+  .z9  { left: 62%; top: 63%; width: 17%; height: 14%; }
+  .z10 { left: 30%; top: 66%; width: 23%; height: 18%; }
+
+  .metro-core {
+    position: absolute;
+    left: 45.8%;
+    top: 43.7%;
+    z-index: 4;
+    transform: translate(-50%, -50%);
+    background: #121212;
+    color: #fff;
+    font-size: clamp(0.3rem, 0.52vw, 0.48rem);
+    font-weight: 700;
+    line-height: 1;
+    border-radius: 999px;
+    padding: 0.34em 0.5em;
+    letter-spacing: 0.02em;
+  }
+
+  .dot {
+    position: absolute;
+    z-index: 3;
+    min-width: 1.22em;
+    height: 1.22em;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.4rem, 0.66vw, 0.65rem);
+    font-weight: 800;
+    line-height: 1;
+    color: #fff;
+    background: #ffb100;
+    padding: 0 0.2em;
+  }
+
+  .n11 { left: 49%; top: 28%; }
+  .n1  { left: 44.5%; top: 47.5%; }
+  .n2  { left: 46.5%; top: 49.5%; }
+  .n3  { left: 61.8%; top: 65.8%; }
+  .n4  { left: 50%; top: 45.5%; }
+  .n5  { left: 32%; top: 45.2%; }
+  .n6  { left: 47.2%; top: 44.2%; }
+  .n7  { left: 54.8%; top: 45.8%; }
+  .n8  { left: 51.5%; top: 50.4%; }
+  .n9  { left: 70.5%; top: 70.8%; }
+  .n10 { left: 40.2%; top: 73.5%; }
+
+  @media (max-width: 980px) {
+    .left-panel {
+      padding-top: 8.8rem;
+    }
+
+    .map-wrap {
+      inset: 6.8rem 6.2% 1.8rem 6.2%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .left-panel {
+      padding-top: 7.6rem;
+    }
+
+    .campus-grid {
+      margin-top: 1rem;
+      gap: 0.55rem;
+    }
+
+    .social {
+      bottom: 3.5%;
+    }
+
+    .map-wrap {
+      inset: 6.3rem 5.8% 1.65rem 5.8%;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .campus-list li {
+      margin-bottom: 0.55rem;
+    }
+
+    .social {
+      font-size: clamp(0.58rem, 1.9vw, 0.8rem);
+    }
+  }
+</style>
