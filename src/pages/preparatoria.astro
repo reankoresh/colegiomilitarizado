@@ -1,13 +1,214 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
-import UANL from "../components/UANL.astro";
+import Title from "../components/ui/Title.astro";
+
+const requisitos = [
+  "Edad: Tener entre 15 anos (minima) y 18 anos (maxima).",
+  "Certificado de secundaria: O constancia de estar cursando el tercer grado.",
+  "Solicitud de registro: Debera llenarse conforme a los lineamientos de la convocatoria.",
+  "CURP: Documento en formato oficial y actualizado.",
+  "Seguridad Social: Numero de Seguro Social (NSS) del estudiante.",
+  "Comprobante de domicilio: Recibo reciente con codigo postal visible.",
+];
+
+const planteles = [
+  {
+    numero: 1,
+    nombre: "San Bernabe",
+    ciudad: "Monterrey",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Prol.+Aztlan+No.+9610+San+Bernabe+VII+Sector+Monterrey+NL",
+  },
+  {
+    numero: 2,
+    nombre: "San Nicolas",
+    ciudad: "San Nicolas de los Garza",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Bosques+del+Nogalar+San+Nicolas+de+los+Garza+Nuevo+Leon",
+  },
+  {
+    numero: 3,
+    nombre: "Apodaca",
+    ciudad: "Apodaca",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Interior+del+Campo+Militar+7-A+Km+1.5+Apodaca+Nuevo+Leon",
+  },
+  {
+    numero: 4,
+    nombre: "Garcia",
+    ciudad: "Garcia",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Libramiento+Noreste+y+Abraham+Lincoln+Mitras+Poniente+Garcia+Nuevo+Leon",
+  },
+  {
+    numero: 5,
+    nombre: "Escobedo",
+    ciudad: "General Escobedo",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Av.+Sendero+y+Av.+Raul+Caballero+General+Escobedo+Nuevo+Leon",
+  },
+  {
+    numero: 6,
+    nombre: "Juarez",
+    ciudad: "Juarez",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=San+Benito+430+Fracc.+Santa+Monica+1er+Sector+Juarez+Nuevo+Leon",
+  },
+  {
+    numero: 7,
+    nombre: "Cadereyta",
+    ciudad: "Cadereyta Jimenez",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Colegio+Militarizado+Cadereyta+Jimenez+Nuevo+Leon",
+  },
+  {
+    numero: 8,
+    nombre: "Montemorelos",
+    ciudad: "Montemorelos",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Camino+las+Adjuntas+S/N+Col.+Bugambilias+Montemorelos+Nuevo+Leon",
+  },
+  {
+    numero: 9,
+    nombre: "Linares",
+    ciudad: "Linares",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Alabastro+350+Col.+Pedregal+Linares+Nuevo+Leon",
+  },
+  {
+    numero: 10,
+    nombre: "Galeana",
+    ciudad: "Galeana",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Carretera+18+de+Marzo+Ejido+Brownsville+Galeana+Nuevo+Leon",
+  },
+  {
+    numero: 11,
+    nombre: "Sabinas Hidalgo",
+    ciudad: "Sabinas Hidalgo",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Carretera+Nacional+Mexico-Laredo+25+Sabinas+Hidalgo+Nuevo+Leon",
+  },
+];
 ---
 
 <Layout>
-	<Navbar />
-	<UANL />
-	<main class="pt-28 px-6 pb-16 max-w-7xl mx-auto">
-		<h1 class="text-4xl font-bold text-stone-800">Preparatoria</h1>
-	</main>
+  <Navbar />
+
+  <main class="min-h-dvh bg-linear-to-br from-stone-950 via-stone-900 to-stone-950 pt-32 pb-20 text-white **:text-white [&_a]:text-white [&_a:hover]:text-white [&_a:visited]:text-white [&_li::marker]:text-white">
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm md:p-10">
+        <Title color="white" tag="h2" class="text-center">Bachillerato Militarizado: Formando los Lideres de Nuevo Leon</Title>
+        <p class="mt-4 text-center text-white!">
+          En el Colegio de Bachilleres Militarizado "General Mariano Escobedo", nos enorgullece ser la institucion mas grande y exitosa de su tipo en Mexico. Somos un modelo a seguir a nivel nacional, donde nuestra mision principal es formar jovenes con un alto concepto del honor, la disciplina y el trabajo.
+        </p>
+        <p class="mt-4 text-center text-white!">
+          Si estas por concluir tus estudios de secundaria o ya cuentas con tu certificado, te invitamos a formar parte de una comunidad educativa que busca la excelencia civica y formativa.
+        </p>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm">
+            <p class="text-sm text-white!">Nivel educativo</p>
+            <p class="mt-1 font-semibold text-white!">Exclusivamente Preparatoria en adelante</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm">
+            <p class="text-sm text-white!">Cobertura estatal</p>
+            <p class="mt-1 font-semibold text-white!">11 planteles en Nuevo Leon</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm">
+            <p class="text-sm text-white!">Perfil formativo</p>
+            <p class="mt-1 font-semibold text-white!">Liderazgo, disciplina, honor y trabajo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-6 lg:grid-cols-3">
+        <article class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm lg:col-span-2">
+          <Title color="white" tag="h3">Nuestra Oferta Educativa</Title>
+          <p class="mt-3 text-white!">
+            Somos una institucion de educacion media superior que prepara a sus alumnos para ser referentes de conocimiento y guias para la sociedad.
+          </p>
+          <ul class="mt-4 space-y-2 text-white">
+            <li class="rounded-xl border border-white/10 bg-stone-900/70 px-4 py-2 backdrop-blur-sm">
+              Somos exclusivamente de nivel Preparatoria en adelante.
+            </li>
+            <li class="rounded-xl border border-white/10 bg-stone-900/70 px-4 py-2 backdrop-blur-sm">
+              No contamos con nivel secundaria; nuestro proceso de formacion inicia con el bachillerato.
+            </li>
+          </ul>
+        </article>
+
+        <aside class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm">
+          <Title color="white" tag="h4">Convocatoria</Title>
+          <ul class="mt-4 space-y-3 text-white">
+            <li><strong>Publicacion:</strong> A partir de marzo.</li>
+            <li><strong>Canales:</strong> Sitio web y redes sociales oficiales.</li>
+            <li><strong>Contenido:</strong> Fechas de registro y pasos de inscripcion.</li>
+            <li><strong>Recomendacion:</strong> Mantenerse atento a los avisos oficiales.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm md:p-8">
+        <Title color="white" tag="h3">Requisitos de Ingreso</Title>
+
+        <article class="mt-6 rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm md:p-5">
+          <ul class="mt-1 list-disc space-y-1 pl-5 text-white">
+            {requisitos.map((requisito) => (
+              <li>{requisito}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm md:p-8">
+        <Title color="white" tag="h3">Ubicacion de nuestros 11 Planteles</Title>
+        <p class="mt-3 text-white!">
+          Contamos con una amplia presencia en todo el estado para estar cerca de ti. Puedes encontrarnos en las siguientes ubicaciones:
+        </p>
+
+        <div class="mt-6 grid gap-3 sm:grid-cols-2">
+          {planteles.map((plantel) => (
+            <div class="rounded-2xl border border-white/10 bg-stone-900/70 px-4 py-3 text-white backdrop-blur-sm">
+              <p class="text-white!">
+                <strong>{plantel.numero}. {plantel.nombre}</strong> ({plantel.ciudad})
+              </p>
+              <a
+                href={plantel.mapaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-2 inline-flex items-center justify-center rounded-full border border-white/20 bg-stone-900/70 px-3 py-1.5 text-sm font-medium text-white backdrop-blur-sm"
+              >
+                Ver mapa
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm md:p-8">
+        <Title color="white" tag="h4">Convocatoria e Inscripciones</Title>
+        <p class="mt-4 text-white!">
+          Te invitamos a mantenerte atento a este sitio web y a nuestras redes sociales oficiales a partir del mes de marzo. En esas fechas daremos a conocer los dias exactos de registro y los pasos detallados para tu inscripcion.
+        </p>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 text-white shadow-md backdrop-blur-sm">
+        <p class="text-white!">
+          Somos la opcion educativa para quienes buscan un futuro basado en la integridad y el liderazgo. <strong>Te esperamos.</strong>
+        </p>
+      </div>
+    </section>
+  </main>
 </Layout>
