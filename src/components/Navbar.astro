@@ -537,6 +537,25 @@ import { Circle, Search, Bell, Menu, X } from "lucide-astro";
       e.stopPropagation();
       toggleAdm();
     });
+
+    // Garantiza que los enlaces internos del dropdown naveguen en desktop.
+    admDropdown.querySelectorAll("a").forEach((linkEl) => {
+      linkEl.addEventListener("click", (e) => {
+        const anchor = e.currentTarget as HTMLAnchorElement;
+        const href = anchor.getAttribute("href");
+        if (!href) return;
+
+        if (href.startsWith("/")) {
+          e.preventDefault();
+          hideAdm();
+          window.location.href = href;
+          return;
+        }
+
+        hideAdm();
+      });
+    });
+
     document.addEventListener("click", (e) => {
       const target = e.target as Node | null;
       if (!target) return;
