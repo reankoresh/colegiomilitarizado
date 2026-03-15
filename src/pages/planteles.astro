@@ -1,35 +1,316 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
+import Title from "../components/ui/Title.astro";
+
+const planteles = [
+  {
+    numero: 1,
+    nombre: "San Bernabe",
+    ciudad: "Monterrey",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Prol.+Aztlan+No.+9610+San+Bernabe+VII+Sector+Monterrey+NL",
+  },
+  {
+    numero: 2,
+    nombre: "San Nicolas",
+    ciudad: "San Nicolas de los Garza",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Bosques+del+Nogalar+San+Nicolas+de+los+Garza+Nuevo+Leon",
+  },
+  {
+    numero: 3,
+    nombre: "Montemorelos",
+    ciudad: "Montemorelos",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Camino+las+Adjuntas+S/N+Col.+Bugambilias+Montemorelos+Nuevo+Leon",
+  },
+  {
+    numero: 4,
+    nombre: "Apodaca",
+    ciudad: "Apodaca",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Interior+del+Campo+Militar+7-A+Km+1.5+Apodaca+Nuevo+Leon",
+  },
+  {
+    numero: 5,
+    nombre: "Garcia",
+    ciudad: "Garcia",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Libramiento+Noreste+y+Abraham+Lincoln+Mitras+Poniente+Garcia+Nuevo+Leon",
+  },
+  {
+    numero: 6,
+    nombre: "Escobedo",
+    ciudad: "General Escobedo",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Av.+Sendero+y+Av.+Raul+Caballero+General+Escobedo+Nuevo+Leon",
+  },
+  {
+    numero: 7,
+    nombre: "Pesqueria",
+    ciudad: "Pesqueria",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Colegio+Militarizado+Pesqueria+Nuevo+Leon",
+  },
+  {
+    numero: 8,
+    nombre: "Juarez",
+    ciudad: "Juarez",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=San+Benito+430+Fracc.+Santa+Monica+1er+Sector+Juarez+Nuevo+Leon",
+  },
+  {
+    numero: 9,
+    nombre: "Linares",
+    ciudad: "Linares",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Alabastro+350+Col.+Pedregal+Linares+Nuevo+Leon",
+  },
+  {
+    numero: 10,
+    nombre: "Galeana",
+    ciudad: "Galeana",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Carretera+18+de+Marzo+Ejido+Brownsville+Galeana+Nuevo+Leon",
+  },
+  {
+    numero: 11,
+    nombre: "Sabinas Hidalgo",
+    ciudad: "Sabinas Hidalgo",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Carretera+Nacional+Mexico-Laredo+25+Sabinas+Hidalgo+Nuevo+Leon",
+  },
+];
 ---
 
 <Layout>
   <Navbar />
 
-  <main class="planteles-page">
-    <img
-      src="/planteles.png"
-      alt="Planteles del Colegio Militarizado"
-      class="planteles-image"
-    />
+  <main class="min-h-dvh bg-[#b16c12] pt-24 flex items-stretch justify-center ">
+    <section
+      class="w-full min-h-[calc(100dvh-6rem)] flex max-[900px]:flex-col"
+      aria-label="Mapa de planteles en Nuevo Leon"
+    >
+      <div
+        class="w-1/2 min-h-[calc(100dvh-6rem)] bg-[#f68a00] overflow-y-auto max-[900px]:order-2 max-[900px]:w-full max-[900px]:min-h-[35dvh]"
+      >
+        <div class="mx-auto w-full max-w-7xl px-5 py-8 text-white sm:px-6 lg:px-8">
+          <Title color="white" tag="h2" >Conoce nuestros planteles</Title>
+
+          <div class="mt-6 rounded-3xl border border-white p-4 sm:p-6">
+            <p class="text-white!">
+              Contamos con una amplia presencia en todo el estado para estar cerca de ti. Puedes encontrarnos en las siguientes ubicaciones:
+            </p>
+
+            <div class="mt-5 grid gap-3 sm:grid-cols-2">
+              {planteles.map((plantel) => (
+                <div class="rounded-2xl border border-white px-4 py-3 text-white">
+                  <p class="leading-tight text-white">
+                    <strong class="text-white">{plantel.numero}. {plantel.nombre}</strong>
+                    <span class="ml-1 text-white">({plantel.ciudad})</span>
+                  </p>
+                  <a
+                    href={plantel.mapaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mt-2 inline-flex items-center justify-center rounded-full border border-white bg-transparent px-3 py-1.5 text-sm font-medium text-white transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#f68a00]"
+                  >
+                    Ver mapa
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-1/2 min-h-[calc(100dvh-6rem)] bg-white flex items-center justify-center max-[900px]:order-1 max-[900px]:w-full max-[900px]:min-h-[55dvh]">
+        <div class="relative mx-auto h-[94%] w-[94%] max-w-190">
+        <object
+          id="nl-map-object"
+          data="/images/mapNL.svg"
+          type="image/svg+xml"
+          class="block h-full w-full object-contain"
+          aria-label="Mapa de municipios de Nuevo Leon"
+        ></object>
+          <div
+            id="nl-map-tooltip"
+            class="pointer-events-none fixed z-50 hidden rounded-md border border-[#f68a00] bg-zinc-900/95 px-3 py-1 text-xs font-bold text-white shadow-lg"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <script is:inline>
+    (function () {
+      var mapObject = document.getElementById("nl-map-object");
+      var tooltip = document.getElementById("nl-map-tooltip");
+
+      if (!mapObject || !tooltip) {
+        return;
+      }
+
+      var selectedMunicipios = {
+        Monterrey: true,
+        "San Nicolas de los Garza": true,
+        Apodaca: true,
+        Garcia: true,
+        "General Escobedo": true,
+        Juarez: true,
+        Pesqueria: true,
+        Montemorelos: true,
+        Linares: true,
+        Galeana: true,
+        "Sabinas Hidalgo": true,
+      };
+
+      var activeElement = null;
+
+      function hideTooltip() {
+        tooltip.classList.add("hidden");
+        activeElement = null;
+      }
+
+      function showTooltip(path, name) {
+        var pathRect;
+        var objectRect;
+        var tooltipRect;
+        var top;
+        var left;
+        var minMargin = 8;
+
+        if (!path) {
+          return;
+        }
+
+        tooltip.textContent = name;
+        tooltip.classList.remove("hidden");
+
+        tooltipRect = tooltip.getBoundingClientRect();
+        pathRect = path.getBoundingClientRect();
+        objectRect = mapObject.getBoundingClientRect();
+
+        if (!pathRect || !objectRect) {
+          return;
+        }
+
+        left = objectRect.left + pathRect.left + pathRect.width / 2 - tooltipRect.width / 2;
+        top = objectRect.top + pathRect.top - tooltipRect.height - 12;
+
+        if (left < minMargin) {
+          left = minMargin;
+        }
+
+        if (left + tooltipRect.width > window.innerWidth - minMargin) {
+          left = window.innerWidth - tooltipRect.width - minMargin;
+        }
+
+        if (top < minMargin) {
+          top = objectRect.top + pathRect.bottom + 10;
+        }
+
+        tooltip.style.left = left + "px";
+        tooltip.style.top = top + "px";
+      }
+
+      function bindMapEvents() {
+        var svgDoc = mapObject.contentDocument;
+        var allPaths;
+        var mapRoot;
+        var svgNs = "http://www.w3.org/2000/svg";
+        var backgroundLayer;
+        var interactiveLayer;
+
+        if (!svgDoc) {
+          return;
+        }
+
+        mapRoot = svgDoc.getElementById("g26");
+        allPaths = svgDoc.querySelectorAll("#g26 path[data-municipio]");
+
+        if (mapRoot) {
+          backgroundLayer = svgDoc.getElementById("municipios-background-layer");
+          interactiveLayer = svgDoc.getElementById("municipios-interactive-layer");
+
+          if (!backgroundLayer) {
+            backgroundLayer = svgDoc.createElementNS(svgNs, "g");
+            backgroundLayer.setAttribute("id", "municipios-background-layer");
+            mapRoot.appendChild(backgroundLayer);
+          }
+
+          if (!interactiveLayer) {
+            interactiveLayer = svgDoc.createElementNS(svgNs, "g");
+            interactiveLayer.setAttribute("id", "municipios-interactive-layer");
+            mapRoot.appendChild(interactiveLayer);
+          }
+        }
+
+        allPaths.forEach(function (path) {
+          var municipio = path.getAttribute("data-municipio") || "";
+
+          if (!selectedMunicipios[municipio]) {
+            if (backgroundLayer) {
+              backgroundLayer.appendChild(path);
+            }
+            return;
+          }
+
+          if (interactiveLayer) {
+            interactiveLayer.appendChild(path);
+          }
+
+          path.addEventListener("mouseenter", function (evt) {
+            if (interactiveLayer && interactiveLayer.lastElementChild !== path) {
+              interactiveLayer.appendChild(path);
+            }
+            activeElement = path;
+            showTooltip(path, municipio);
+          });
+
+          path.addEventListener("mouseleave", function () {
+            hideTooltip();
+          });
+
+          path.addEventListener("touchstart", function (evt) {
+            if (!evt.touches || evt.touches.length === 0) {
+              return;
+            }
+
+            evt.preventDefault();
+
+            if (activeElement === path) {
+              hideTooltip();
+              return;
+            }
+
+            if (interactiveLayer && interactiveLayer.lastElementChild !== path) {
+              interactiveLayer.appendChild(path);
+            }
+            activeElement = path;
+            showTooltip(path, municipio);
+          });
+        });
+
+        svgDoc.addEventListener("touchstart", function (evt) {
+          if (!evt.target || evt.target.nodeName !== "path") {
+            hideTooltip();
+          }
+        });
+      }
+
+      mapObject.addEventListener("load", bindMapEvents);
+      if (mapObject.contentDocument) {
+        bindMapEvents();
+      }
+      document.addEventListener("scroll", hideTooltip, { passive: true });
+      document.addEventListener("keydown", function (evt) {
+        if (evt.key === "Escape") {
+          hideTooltip();
+        }
+      });
+    })();
+  </script>
 </Layout>
-
-<style>
-  .planteles-page {
-    min-height: 100dvh;
-    padding: 0;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .planteles-image {
-    width: 98vw;
-    height: 98dvh;
-    display: block;
-    object-fit: contain;
-  }
-</style>

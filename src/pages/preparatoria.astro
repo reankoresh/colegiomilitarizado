@@ -4,70 +4,70 @@ import Navbar from "../components/Navbar.astro";
 import Title from "../components/ui/Title.astro";
 
 const requisitos = [
-  "Edad: Tener entre 15 anos (minima) y 18 anos (maxima).",
-  "Certificado de secundaria: O constancia de estar cursando el tercer grado.",
-  "Solicitud de registro: Debera llenarse conforme a los lineamientos de la convocatoria.",
+  "Edad: Tener entre 15 años (mínima) y 18 años (máxima).",
+  "Certificado de secundaria: o constancia de estar cursando el tercer grado.",
+  "Solicitud de registro: Deberá llenarse conforme a los lineamientos de la convocatoria.",
   "CURP: Documento en formato oficial y actualizado.",
-  "Seguridad Social: Numero de Seguro Social (NSS) del estudiante.",
-  "Comprobante de domicilio: Recibo reciente con codigo postal visible.",
+  "Seguridad Social: Número de Seguro Social (NSS) del estudiante.",
+  "Comprobante de domicilio: Recibo reciente con código postal visible.",
 ];
 
 const planteles = [
   {
     numero: 1,
-    nombre: "San Bernabe",
+    nombre: "San Bernabé",
     ciudad: "Monterrey",
     mapaUrl:
       "https://www.google.com/maps/search/?api=1&query=Prol.+Aztlan+No.+9610+San+Bernabe+VII+Sector+Monterrey+NL",
   },
   {
     numero: 2,
-    nombre: "San Nicolas",
-    ciudad: "San Nicolas de los Garza",
+    nombre: "San Nicolás",
+    ciudad: "San Nicolás de los Garza",
     mapaUrl:
       "https://www.google.com/maps/search/?api=1&query=Bosques+del+Nogalar+San+Nicolas+de+los+Garza+Nuevo+Leon",
   },
   {
     numero: 3,
+    nombre: "Montemorelos",
+    ciudad: "Montemorelos",
+    mapaUrl:
+      "https://www.google.com/maps/search/?api=1&query=Camino+las+Adjuntas+S/N+Col.+Bugambilias+Montemorelos+Nuevo+Leon",
+  },
+  {
+    numero: 4,
     nombre: "Apodaca",
     ciudad: "Apodaca",
     mapaUrl:
       "https://www.google.com/maps/search/?api=1&query=Interior+del+Campo+Militar+7-A+Km+1.5+Apodaca+Nuevo+Leon",
   },
   {
-    numero: 4,
-    nombre: "Garcia",
-    ciudad: "Garcia",
+    numero: 5,
+    nombre: "García",
+    ciudad: "García",
     mapaUrl:
       "https://www.google.com/maps/search/?api=1&query=Libramiento+Noreste+y+Abraham+Lincoln+Mitras+Poniente+Garcia+Nuevo+Leon",
   },
   {
-    numero: 5,
+    numero: 6,
     nombre: "Escobedo",
     ciudad: "General Escobedo",
     mapaUrl:
       "https://www.google.com/maps/search/?api=1&query=Av.+Sendero+y+Av.+Raul+Caballero+General+Escobedo+Nuevo+Leon",
   },
   {
-    numero: 6,
-    nombre: "Juarez",
-    ciudad: "Juarez",
-    mapaUrl:
-      "https://www.google.com/maps/search/?api=1&query=San+Benito+430+Fracc.+Santa+Monica+1er+Sector+Juarez+Nuevo+Leon",
-  },
-  {
     numero: 7,
-    nombre: "Cadereyta",
-    ciudad: "Cadereyta Jimenez",
+    nombre: "Pesquería",
+    ciudad: "Pesquería",
     mapaUrl:
-      "https://www.google.com/maps/search/?api=1&query=Colegio+Militarizado+Cadereyta+Jimenez+Nuevo+Leon",
+      "https://www.google.com/maps/search/?api=1&query=Colegio+Militarizado+Pesqueria+Nuevo+Leon",
   },
   {
     numero: 8,
-    nombre: "Montemorelos",
-    ciudad: "Montemorelos",
+    nombre: "Juárez",
+    ciudad: "Juárez",
     mapaUrl:
-      "https://www.google.com/maps/search/?api=1&query=Camino+las+Adjuntas+S/N+Col.+Bugambilias+Montemorelos+Nuevo+Leon",
+      "https://www.google.com/maps/search/?api=1&query=San+Benito+430+Fracc.+Santa+Monica+1er+Sector+Juarez+Nuevo+Leon",
   },
   {
     numero: 9,
@@ -91,6 +91,54 @@ const planteles = [
       "https://www.google.com/maps/search/?api=1&query=Carretera+Nacional+Mexico-Laredo+25+Sabinas+Hidalgo+Nuevo+Leon",
   },
 ];
+
+const mensajeInstitucional = [
+  {
+    titulo: "Educación pública de máxima calidad",
+    descripcion:
+      "Modelo de preparatoria pública, gratuita y de alto nivel académico para formar a las y los líderes que México necesita.",
+  },
+  {
+    titulo: "Formación integral",
+    descripcion:
+      "Una jornada completa que acompaña el desarrollo académico, personal y social de cada estudiante.",
+  },
+  {
+    titulo: "Desayuno y comida diario",
+    descripcion:
+      "Las y los estudiantes reciben alimentos diariamente como parte del acompañamiento institucional.",
+  },
+  {
+    titulo: "Atención médica",
+    descripcion:
+      "El plantel brinda seguimiento de salud para fortalecer el bienestar de la comunidad estudiantil.",
+  },
+  {
+    titulo: "Tarifas preferenciales",
+    descripcion:
+      "Acceso a beneficios en transporte para facilitar traslados y permanencia escolar.",
+  },
+  {
+    titulo: "Disciplina formativa",
+    descripcion:
+      "El acento militarizado fortalece carácter, responsabilidad, puntualidad y respeto a la ley y a la autoridad.",
+  },
+  {
+    titulo: "Educación dual",
+    descripcion:
+      "Posibilidad de integrarse al mundo laboral desde preparatoria mediante el sistema de educación dual.",
+  },
+  {
+    titulo: "Continuidad académica",
+    descripcion:
+      "Al egresar, las y los estudiantes pueden continuar estudios en la UANL al estar incorporados a su sistema educativo.",
+  },
+  {
+    titulo: "Resultados comprobables",
+    descripcion:
+      "En 2025, el Colegio Militarizado registró cero retrasos y cero faltas.",
+  },
+];
 ---
 
 <Layout>
@@ -99,12 +147,15 @@ const planteles = [
   <main class="min-h-dvh bg-linear-to-br from-stone-950 via-stone-900 to-stone-950 pt-32 pb-20 text-white **:text-white [&_a]:text-white [&_a:hover]:text-white [&_a:visited]:text-white [&_li::marker]:text-white">
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm md:p-10">
-        <Title color="white" tag="h2" class="text-center">Bachillerato Militarizado: Formando los Lideres de Nuevo Leon</Title>
-        <p class="mt-4 text-center text-white!">
-          En el Colegio de Bachilleres Militarizado "General Mariano Escobedo", nos enorgullece ser la institucion mas grande y exitosa de su tipo en Mexico. Somos un modelo a seguir a nivel nacional, donde nuestra mision principal es formar jovenes con un alto concepto del honor, la disciplina y el trabajo.
+        <Title color="white" tag="h2" class="mb-6 text-center">Bachillerato Militarizado: Formando los Líderes de Nuevo León</Title>
+        <p class="text-left text-white!">
+          En el Colegio de Bachilleres Militarizado "General Mariano Escobedo", nos enorgullece ser la institución más grande y exitosa de su tipo en México.
         </p>
-        <p class="mt-4 text-center text-white!">
-          Si estas por concluir tus estudios de secundaria o ya cuentas con tu certificado, te invitamos a formar parte de una comunidad educativa que busca la excelencia civica y formativa.
+        <p class="mt-3 text-left text-white!">
+          Somos un modelo a seguir a nivel nacional, donde nuestra misión principal es formar jóvenes con un alto concepto del honor, la disciplina y el trabajo.
+        </p>
+        <p class="mt-4 text-left text-white!">
+          Si estás por concluir tus estudios de secundaria o ya cuentas con tu certificado, te invitamos a formar parte de una comunidad educativa que busca la excelencia cívica y formativa.
         </p>
 
         <div class="mt-8 grid gap-4 md:grid-cols-3">
@@ -114,7 +165,7 @@ const planteles = [
           </div>
           <div class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm">
             <p class="text-sm text-white!">Cobertura estatal</p>
-            <p class="mt-1 font-semibold text-white!">11 planteles en Nuevo Leon</p>
+            <p class="mt-1 font-semibold text-white!">11 planteles en Nuevo León</p>
           </div>
           <div class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm">
             <p class="text-sm text-white!">Perfil formativo</p>
@@ -127,27 +178,27 @@ const planteles = [
     <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid gap-6 lg:grid-cols-3">
         <article class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm lg:col-span-2">
-          <Title color="white" tag="h3">Nuestra Oferta Educativa</Title>
-          <p class="mt-3 text-white!">
-            Somos una institucion de educacion media superior que prepara a sus alumnos para ser referentes de conocimiento y guias para la sociedad.
+          <Title color="white" tag="h3" class="mb-5">Nuestra Oferta Educativa</Title>
+          <p class="text-white!">
+            Somos una institución de educación media superior que prepara a sus alumnos para ser referentes de conocimiento y guías para la sociedad.
           </p>
           <ul class="mt-4 space-y-2 text-white">
             <li class="rounded-xl border border-white/10 bg-stone-900/70 px-4 py-2 backdrop-blur-sm">
               Somos exclusivamente de nivel Preparatoria en adelante.
             </li>
             <li class="rounded-xl border border-white/10 bg-stone-900/70 px-4 py-2 backdrop-blur-sm">
-              No contamos con nivel secundaria; nuestro proceso de formacion inicia con el bachillerato.
+              No contamos con nivel secundaria; nuestro proceso de formación inicia con el bachillerato.
             </li>
           </ul>
         </article>
 
         <aside class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm">
-          <Title color="white" tag="h4">Convocatoria</Title>
-          <ul class="mt-4 space-y-3 text-white">
-            <li><strong>Publicacion:</strong> A partir de marzo.</li>
+          <Title color="white" tag="h4" class="mb-5">Convocatoria</Title>
+          <ul class="space-y-3 text-white">
+            <li><strong>Publicación:</strong> A partir de marzo.</li>
             <li><strong>Canales:</strong> Sitio web y redes sociales oficiales.</li>
-            <li><strong>Contenido:</strong> Fechas de registro y pasos de inscripcion.</li>
-            <li><strong>Recomendacion:</strong> Mantenerse atento a los avisos oficiales.</li>
+            <li><strong>Contenido:</strong> Fechas de registro y pasos de inscripción.</li>
+            <li><strong>Recomendación:</strong> Mantenerse atento a los avisos oficiales.</li>
           </ul>
         </aside>
       </div>
@@ -155,9 +206,31 @@ const planteles = [
 
     <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm md:p-8">
-        <Title color="white" tag="h3">Requisitos de Ingreso</Title>
+        <Title color="white" tag="h3" class="mb-5">Beneficios</Title>
+        <p class="text-white!">
+          En Nuevo León entendimos algo fundamental: la educación no solo debe preparar buenos estudiantes, también debe formar a las y los líderes que México necesita. El Colegio Militarizado "General Mariano Escobedo" es una preparatoria pública única en el país que combina excelencia académica, formación integral y compromiso social como un proyecto educativo de largo plazo.
+        </p>
 
-        <article class="mt-6 rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm md:p-5">
+        <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {mensajeInstitucional.map((apartado) => (
+            <article class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm">
+              <p class="text-sm font-semibold text-white!">{apartado.titulo}</p>
+              <p class="mt-2 text-sm text-white/90!">{apartado.descripcion}</p>
+            </article>
+          ))}
+        </div>
+
+        <p class="mt-5 text-white!">
+          Aquí el futuro no se detiene: se forja con honor, disciplina y trabajo.
+        </p>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm md:p-8">
+        <Title color="white" tag="h3" class="mb-5">Requisitos de Ingreso</Title>
+
+        <article class="rounded-2xl border border-white/10 bg-stone-900/70 p-4 backdrop-blur-sm md:p-5">
           <ul class="mt-1 list-disc space-y-1 pl-5 text-white">
             {requisitos.map((requisito) => (
               <li>{requisito}</li>
@@ -169,16 +242,17 @@ const planteles = [
 
     <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm md:p-8">
-        <Title color="white" tag="h3">Ubicacion de nuestros 11 Planteles</Title>
-        <p class="mt-3 text-white!">
+        <Title color="white" tag="h3" class="mb-5">Ubicación</Title>
+        <p class="text-white!">
           Contamos con una amplia presencia en todo el estado para estar cerca de ti. Puedes encontrarnos en las siguientes ubicaciones:
         </p>
 
         <div class="mt-6 grid gap-3 sm:grid-cols-2">
           {planteles.map((plantel) => (
             <div class="rounded-2xl border border-white/10 bg-stone-900/70 px-4 py-3 text-white backdrop-blur-sm">
-              <p class="text-white!">
-                <strong>{plantel.numero}. {plantel.nombre}</strong> ({plantel.ciudad})
+              <p class="text-white! leading-tight">
+                <strong>{plantel.numero}. {plantel.nombre}</strong>
+                <span class="ml-1">({plantel.ciudad})</span>
               </p>
               <a
                 href={plantel.mapaUrl}
@@ -196,9 +270,9 @@ const planteles = [
 
     <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 shadow-md backdrop-blur-sm md:p-8">
-        <Title color="white" tag="h4">Convocatoria e Inscripciones</Title>
-        <p class="mt-4 text-white!">
-          Te invitamos a mantenerte atento a este sitio web y a nuestras redes sociales oficiales a partir del mes de marzo. En esas fechas daremos a conocer los dias exactos de registro y los pasos detallados para tu inscripcion.
+        <Title color="white" tag="h4" class="mb-5">Convocatoria e Inscripciones</Title>
+        <p class="text-white!">
+          Te invitamos a mantenerte atento a este sitio web y a nuestras redes sociales oficiales a partir del mes de marzo. En esas fechas daremos a conocer los días exactos de registro y los pasos detallados para tu inscripción.
         </p>
       </div>
     </section>
@@ -206,9 +280,10 @@ const planteles = [
     <section class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="rounded-3xl border border-white/10 bg-stone-900/80 p-6 text-white shadow-md backdrop-blur-sm">
         <p class="text-white!">
-          Somos la opcion educativa para quienes buscan un futuro basado en la integridad y el liderazgo. <strong>Te esperamos.</strong>
+          Somos la opción educativa para quienes buscan un futuro basado en la integridad y el liderazgo. <strong>Te esperamos.</strong>
         </p>
       </div>
     </section>
   </main>
+
 </Layout>
