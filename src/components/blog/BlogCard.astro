@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import type { StrapiPost } from "../../lib/strapi/types";
+
+interface Props {
+  post: StrapiPost;
+}
+
+const { post } = Astro.props;
+
+const date = post.publishDate || post.publishedAt;
+const dateLabel = date
+  ? new Date(date).toLocaleDateString("es-MX", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    })
+  : "Sin fecha";
+---
+
+<article class="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-md">
+  {
+    post.coverImageUrl ? (
+      <a href={`/blog/${post.slug}`} class="block">
+        <Image
+          src={post.coverImageUrl}
+          alt={post.title}
+          width={1200}
+          height={630}
+          class="h-52 w-full object-cover"
+        />
+      </a>
+    ) : (
+      <a
+        href={`/blog/${post.slug}`}
+        class="grid h-52 w-full place-items-center bg-stone-100 text-stone-500"
+      >
+        Sin imagen de portada
+      </a>
+    )
+  }
+
+  <div class="space-y-3 p-5">
+    {
+      post.category && (
+        <span
+          class="inline-flex rounded-full px-3 py-1 text-xs font-semibold"
+          style={post.category.color ? `background:${post.category.color}22;color:${post.category.color};` : undefined}
+        >
+          {post.category.name}
+        </span>
+      )
+    }
+
+    <h2 class="m-0 text-xl font-semibold leading-tight text-stone-900">
+      <a href={`/blog/${post.slug}`} class="no-underline text-inherit hover:text-orange-600">
+        {post.title}
+      </a>
+    </h2>
+
+    <p class="line-clamp-3 text-stone-700">
+      {post.excerpt || "Este post no tiene extracto todavía."}
+    </p>
+
+    <div class="flex items-center justify-between text-sm text-stone-500">
+      <span>{dateLabel}</span>
+      <span>{post.readingTime ?? 1} min de lectura</span>
+    </div>
+  </div>
+</article>

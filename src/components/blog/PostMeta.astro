@@ -1,0 +1,48 @@
+---
+import type { StrapiPost } from "../../lib/strapi/types";
+
+interface Props {
+  post: StrapiPost;
+}
+
+const { post } = Astro.props;
+const date = post.publishDate || post.publishedAt;
+const dateLabel = date
+  ? new Date(date).toLocaleDateString("es-MX", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    })
+  : "Sin fecha";
+---
+
+<div class="flex flex-wrap items-center gap-3 text-sm text-stone-600">
+  <span>{dateLabel}</span>
+  <span>•</span>
+  <span>{post.readingTime ?? 1} min de lectura</span>
+
+  {
+    post.category && (
+      <>
+        <span>•</span>
+        <span
+          class="inline-flex rounded-full px-3 py-1 text-xs font-semibold"
+          style={post.category.color ? `background:${post.category.color}22;color:${post.category.color};` : undefined}
+        >
+          {post.category.name}
+        </span>
+      </>
+    )
+  }
+
+  {
+    post.tags.length > 0 && (
+      <>
+        <span>•</span>
+        <div class="flex flex-wrap gap-2">
+          {post.tags.map((tag) => <span class="rounded-full bg-stone-100 px-2 py-1 text-xs">#{tag.name}</span>)}
+        </div>
+      </>
+    )
+  }
+</div>

@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.0",
-    "astro": "^5.17.3",
+    "astro": "^6.0.8",
+    "blocks-html-renderer": "^1.0.6",
     "lucide-astro": "^0.556.0",
     "tailwindcss": "^4.2.0"
   }

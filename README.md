@@ -1,46 +1,114 @@
-# Astro Starter Kit: Basics
+# Colegio Militarizado + Blog Strapi
 
-```sh
-npm create astro@latest -- --template basics
+Sitio Astro v6 con integración de blog en modo SSG consumiendo contenido desde Strapi.
+
+## Requisitos
+
+- Node 22.12 o superior
+- Astro 6
+- Instancia Strapi disponible
+
+## Variables de entorno
+
+Define estas variables en `.env`:
+
+```bash
+STRAPI_URL=http://localhost:1337
+STRAPI_TOKEN=
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+`STRAPI_TOKEN` es opcional si tu API de lectura es pública.
+<!--
+## Modelo de contenido en Strapi
 
-## 🚀 Project Structure
+### Collection Type: Post
 
-Inside of your Astro project, you'll see the following folders and files:
+- `title` (Text short)
+- `slug` (UID, enlazado a `title`)
+- `content` (Blocks rich text)
+- `excerpt` (Text long)
+- `coverImage` (Media single)
+- `publishDate` (Date)
+- `readingTime` (Number, opcional)
+- `author` (Relation N:1 -> Author)
+- `category` (Relation N:1 -> Category)
+- `tags` (Relation N:N -> Tag)
+- `seo` (Component -> Shared.Seo)
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+Activa Draft & Publish para poder filtrar borradores en Astro.
+
+### Collection Type: Author
+
+- `name` (Text short)
+- `avatar` (Media single)
+- `bio` (Text long)
+- `socialLinks` (Component repeatable -> Shared.SocialLink)
+
+### Component: Shared.SocialLink
+
+- `platform` (Enumeration)
+- `url` (Text)
+
+### Collection Type: Category
+
+- `name` (Text short)
+- `slug` (UID)
+- `color` (Text short con hex, por ejemplo `#f97316`)
+
+
+### Collection Type: Tag
+
+- `name` (Text short)
+- `slug` (UID)
+
+### Component: Shared.Seo
+
+- `metaTitle` (Text short, max 60)
+- `metaDescription` (Text long, max 160)
+- `shareImage` (Media single)
+-->
+## Permisos API (Strapi)
+
+En Roles/Permissions o API Tokens, habilita lectura para:
+- Posts
+- Authors
+- Categories
+- Tags
+
+Si usarás token, coloca el valor en `STRAPI_TOKEN`.
+
+## Rutas implementadas
+
+- `/blog` listado de posts
+- `/blog/[slug]` detalle de post
+
+Reglas clave implementadas:
+- Solo se generan páginas para posts publicados (`publishedAt` no nulo).
+- SEO por entrada usando `Shared.Seo` con fallback a título + extracto + portada.
+- Render de `content` (Blocks) usando `blocks-html-renderer`.
+
+## Archivos principales de la integración
+
+- `src/lib/strapi/client.ts`
+- `src/lib/strapi/mappers.ts`
+- `src/lib/strapi/types.ts`
+- `src/lib/strapi/blocks.ts`
+- `src/pages/blog/index.astro`
+- `src/pages/blog/[slug].astro`
+- `src/components/blog/BlogCard.astro`
+- `src/components/blog/PostMeta.astro`
+- `src/components/blog/PostAuthor.astro`
+- `src/layouts/Layout.astro`
+
+## Comandos
+
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Siguiente paso recomendado
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Configurar un webhook en Strapi para disparar el rebuild del sitio al publicar un post (ya que el blog está en SSG).
