@@ -4,6 +4,7 @@ import {
   BookOpen,
   Circle,
   Newspaper,
+  ShoppingBag,
   GraduationCap,
   // Dumbbell,
   // Palette,
@@ -19,6 +20,7 @@ const { variant = "desktop", context } = Astro.props;
 
 const mainItems = [
   { href: "#", label: "Admisiones", Icon: FileText },
+  { href: "https://www.tienda.kikiriprint.com", label: "Tienda", Icon: ShoppingBag },
   { href: "/blog", label: "Blog", Icon: Newspaper },
   { href: "/faqs", label: "FAQs", Icon: Circle },
   { href: "/planteles", label: "Planteles", Icon: BookOpen },
@@ -82,6 +84,11 @@ const profileMobile =
             </span>
             <span class="flex items-center gap-2">
               {label}
+              {label === "Tienda" && (
+                <span class="inline-flex items-center rounded-full bg-orange-500 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white animate-pulse">
+                  Nuevo
+                </span>
+              )}
               {label === "Admisiones" && (
                 <ChevronRight
                   class="h-4 w-4 text-stone-400"
@@ -95,14 +102,22 @@ const profileMobile =
     </>
   ) : (
     <>
-      {mainItems.map(({ href, label }, idx) => (
+      {mainItems.map(({ href, label, Icon }, idx) => (
         <a
           href={href}
           class={idx === 0 ? desktopFirst : desktopOther}
           data-desktop-link={label === "Admisiones" ? "admisiones" : undefined}
         >
           <span class="inline-flex items-center gap-2">
+            {label === "Tienda" && (
+              <Icon class="h-4 w-4 text-white" aria-hidden="true" />
+            )}
             {label}
+            {label === "Tienda" && (
+              <span class="inline-flex items-center rounded-full bg-orange-500 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white animate-pulse">
+                Nuevo
+              </span>
+            )}
             {label === "Admisiones" && (
               <ChevronDown class="h-4 w-4 text-stone-400" aria-hidden="true" />
             )}
