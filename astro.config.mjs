@@ -46,6 +46,9 @@ export default defineConfig({
       display: "swap",
     },
   ],
+  redirects: {
+    "/tienda": "https://www.tienda.kikiriprint.com/",
+  },
   vite: {
     plugins: [tailwindcss()],
   },
