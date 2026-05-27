@@ -1,0 +1,46 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import BlogCard from "../../components/blog/BlogCard.astro";
+import { getAllPosts, hasStrapiConfig } from "../../lib/strapi/client";
+
+const posts = await getAllPosts();
+const hasConfig = hasStrapiConfig();
+---
+
+<Layout
+  seoTitle="Blog | Colegio Militarizado"
+  seoDescription="Noticias, artículos y contenido editorial del Colegio Militarizado."
+  seoType="website"
+>
+  <Navbar />
+
+  <main class="mx-auto max-w-7xl px-4 pb-20 pt-40 sm:px-6 lg:px-8">
+    <header class="mb-10">
+      <h1 class="m-0 text-4xl font-bold text-stone-900">Blog</h1>
+      <p class="mt-4 max-w-2xl text-stone-700">
+        Publicaciones oficiales con novedades, guías y contenido académico.
+      </p>
+    </header>
+
+    {
+      !hasConfig && (
+        <section class="mb-8 rounded-xl border border-amber-300 bg-amber-50 p-4 text-amber-900">
+          Configura STRAPI_URL en variables de entorno para mostrar posts.
+        </section>
+      )
+    }
+
+    {
+      posts.length === 0 ? (
+        <section class="rounded-xl border border-stone-200 bg-white p-8 text-center text-stone-600">
+          No hay publicaciones disponibles todavía.
+        </section>
+      ) : (
+        <section class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {posts.map((post) => <BlogCard post={post} />)}
+        </section>
+      )
+    }
+  </main>
+</Layout>

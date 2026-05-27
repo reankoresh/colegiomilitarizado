@@ -1,0 +1,58 @@
+---
+import Title from "../ui/Title.astro";
+import UesProgramCard from "./UesProgramCard.astro";
+
+const programs = [
+  {
+    title: "Ingeniería en Logística",
+    points: [
+      "Gestiona los procesos del flujo de materiales y servicios desde el proveedor hasta el cliente.",
+      "Optimiza el resguardo de productos, tiempos y costos.",
+      "Plantea, opera y diseña la gestión de cadenas de suministro.",
+      "Genera información confiable, precisa, oportuna y relevante para la toma de decisiones.",
+    ],
+    route: "/registro?programa=ingenieria-logistica",
+  },
+  {
+    title: "Ingeniería en Desarrollo Sustentable",
+    points: [
+      "Evalúa la disponibilidad y restricción de recursos naturales para crear nuevos modelos de negocio.",
+      "Mejora procesos productivos para el uso eficiente de recursos naturales y energéticos.",
+      "Integra bases de ingeniería en electricidad, ingeniería ambiental e ingeniería química inorgánica.",
+      "Maneja el uso, generación y distribución de energía.",
+    ],
+    route: "/registro?programa=ingenieria-desarrollo-sustentable",
+  },
+  {
+    title: "Ingeniería en Seguridad Informática",
+    points: [
+      "Permite integrarte a empresas como ingeniero en seguridad, infraestructura, analista de red o en proyectos tecnológicos.",
+      "Evalúa la seguridad de sistemas de información, dispositivos y redes.",
+      "Diseña la infraestructura necesaria para soluciones tecnológicas.",
+    ],
+    route: "/registro?programa=ingenieria-seguridad-informatica",
+  },
+];
+---
+
+<section class="w-full bg-white py-16 px-6">
+  <div class="w-full md:w-11/12 max-w-7xl mx-auto">
+    <Title tag="h2" class="mb-4">División de Estudios Superiores</Title>
+    <p class="text-stone-700 leading-8 mb-10">
+      Oferta académica de UES. Cada opción te lleva al proceso de admisiones con el programa seleccionado.
+    </p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {
+        programs.map((program) => (
+          <UesProgramCard
+            title={program.title}
+            points={program.points}
+            route={program.route}
+            ctaLabel="Admisiones"
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

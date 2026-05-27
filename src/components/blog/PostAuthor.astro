@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import type { StrapiAuthor } from "../../lib/strapi/types";
+
+interface Props {
+  author?: StrapiAuthor;
+}
+
+const { author } = Astro.props;
+if (!author) {
+  return null;
+}
+---
+
+<section class="mt-10 rounded-2xl border border-stone-200 bg-white p-6">
+  <div class="flex items-start gap-4">
+    {
+      author.avatarUrl ? (
+        <Image
+          src={author.avatarUrl}
+          alt={author.name}
+          width={96}
+          height={96}
+          class="h-16 w-16 rounded-full object-cover"
+        />
+      ) : (
+        <div class="grid h-16 w-16 place-items-center rounded-full bg-stone-100 text-sm text-stone-500">
+          {author.name.slice(0, 1).toUpperCase()}
+        </div>
+      )
+    }
+
+    <div class="space-y-2">
+      <h2 class="m-0 text-lg font-semibold text-stone-900">{author.name}</h2>
+      {author.bio && <p>{author.bio}</p>}
+
+      {
+        author.socialLinks.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {author.socialLinks.map((social) => (
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noreferrer"
+                class="rounded-full bg-stone-100 px-3 py-1 text-xs text-stone-700 no-underline hover:bg-stone-200"
+              >
+                {social.platform}
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
