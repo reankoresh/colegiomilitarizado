@@ -1,0 +1,230 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+---
+
+<Layout
+  seoTitle="Correo Institucional"
+  seoDescription="Acceso al ecosistema digital del Colegio Militarizado Nuevo León."
+  canonicalPath="/mail"
+>
+
+<Navbar />
+
+<main class="hero">
+
+    <div class="card">
+
+        <img src="/logoCM.svg" class="logo" alt="Colegio Militarizado"/>
+
+        <h1>Centro de Servicios Digitales</h1>
+
+        <p>
+            Bienvenido al ecosistema tecnológico del
+            Colegio Militarizado Nuevo León.
+        </p>
+
+        <a
+            href="https://mail.hostinger.com"
+            target="_blank"
+            class="btn">
+
+            📧 Acceder al Correo Institucional
+
+        </a>
+
+        <div class="coming">
+
+            <div>
+
+                🤖
+
+                <span>IA LEÓN</span>
+
+                <small>Próximamente</small>
+
+            </div>
+
+            <div>
+
+                🎓
+
+                <span>Portal Académico</span>
+
+                <small>Próximamente</small>
+
+            </div>
+
+            <div>
+
+                💻
+
+                <span>Soporte Técnico</span>
+
+                <small>Próximamente</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+</Layout>
+
+<style>
+
+.hero{
+
+min-height:90vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:40px;
+
+background:
+
+linear-gradient(135deg,#0f172a,#111827,#14532d);
+
+}
+
+.card{
+
+max-width:700px;
+
+background:white;
+
+padding:60px;
+
+border-radius:20px;
+
+box-shadow:0 20px 60px rgba(0,0,0,.25);
+
+text-align:center;
+
+}
+
+.logo{
+
+width:120px;
+
+margin-bottom:30px;
+
+}
+
+h1{
+
+font-size:3rem;
+
+margin-bottom:15px;
+
+}
+
+p{
+
+font-size:1.2rem;
+
+color:#666;
+
+margin-bottom:35px;
+
+}
+
+.btn{
+
+display:inline-block;
+
+background:#166534;
+
+color:white;
+
+padding:18px 40px;
+
+border-radius:10px;
+
+text-decoration:none;
+
+font-size:1.1rem;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-2px);
+
+background:#15803d;
+
+}
+
+.coming{
+
+margin-top:50px;
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:25px;
+
+}
+
+.coming div{
+
+padding:20px;
+
+background:#f7f7f7;
+
+border-radius:10px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:8px;
+
+}
+
+.coming span{
+
+font-weight:bold;
+
+}
+
+.coming small{
+
+color:#999;
+
+}
+
+@media(max-width:700px){
+
+.coming{
+
+grid-template-columns:1fr;
+
+}
+
+h1{
+
+font-size:2rem;
+
+}
+
+.card{
+
+padding:35px;
+
+}
+
+}
+
+</style>
