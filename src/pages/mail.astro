@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar.astro";
 ---
 
 <Layout
-  seoTitle="Correo Institucional"
+  seoTitle="Centro de Servicios Digitales"
   seoDescription="Acceso al ecosistema digital del Colegio Militarizado Nuevo León."
   canonicalPath="/mail"
 >
@@ -12,12 +12,18 @@ import Navbar from "../components/Navbar.astro";
 
   <main class="hero">
     <div class="card">
-      <img src="/logoCM.svg" class="logo" alt="Colegio Militarizado" />
+
+      <img
+        src="/logoCM.svg"
+        class="logo"
+        alt="Colegio Militarizado"
+      />
 
       <h1>Centro de Servicios Digitales</h1>
 
-      <p>
-        Bienvenido al ecosistema tecnológico del Colegio Militarizado Nuevo León.
+      <p class="subtitle">
+        Bienvenido al ecosistema tecnológico del
+        Colegio Militarizado Nuevo León.
       </p>
 
       <a
@@ -30,135 +36,234 @@ import Navbar from "../components/Navbar.astro";
       </a>
 
       <div class="coming">
-        <div>
-          <span class="icon">🤖</span>
+
+        <div class="service">
+          <div class="emoji">🤖</div>
           <span>IA LEÓN</span>
           <small>Próximamente</small>
         </div>
 
-        <div>
-          <span class="icon">🎓</span>
+        <div class="service">
+          <div class="emoji">🎓</div>
           <span>Portal Académico</span>
           <small>Próximamente</small>
         </div>
 
-        <div>
-          <span class="icon">💻</span>
+        <div class="service">
+          <div class="emoji">💻</div>
           <span>Soporte Técnico</span>
           <small>Próximamente</small>
         </div>
+
       </div>
+
     </div>
   </main>
 </Layout>
 
 <style>
-  .hero {
-    min-height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #0f172a, #111827, #14532d);
-  }
 
-  .card {
-    width: 100%;
-    max-width: 620px;
-    background: white;
-    padding: 56px 42px;
-    border-radius: 24px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-    text-align: center;
-  }
+.hero{
 
-  .logo {
-    width: 120px;
-    margin-bottom: 28px;
-  }
+min-height:calc(100vh - 80px);
 
-  h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin: 0 0 15px;
-  }
+display:flex;
 
-  p {
-    font-size: 1.15rem;
-    color: #666;
-    margin: 0 0 35px;
-    line-height: 1.5;
-  }
+justify-content:center;
 
-  .btn {
-    display: inline-block;
-    background: #166534;
-    color: white;
-    padding: 18px 38px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-size: 1.05rem;
-    font-weight: bold;
-    transition: 0.25s;
-  }
+align-items:center;
 
-  .btn:hover {
-    transform: translateY(-2px);
-    background: #15803d;
-  }
+padding:40px 20px;
 
-  .coming {
-    margin: 44px auto 0;
-    display: grid;
-    grid-template-columns: repeat(3, 150px);
-    justify-content: center;
-    gap: 16px;
-    width: fit-content;
-  }
+background:linear-gradient(
+135deg,
+#081321 0%,
+#0b1d2f 50%,
+#10462d 100%
+);
 
-  .coming div {
-    width: 150px;
-    height: 118px;
-    padding: 16px;
-    background: #f7f7f7;
-    border-radius: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 7px;
-    transition: 0.25s;
-  }
+}
 
-  .coming div:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-  }
+.card{
 
-  .icon {
-    font-size: 1.35rem;
-  }
+background:white;
 
-  .coming span {
-    font-weight: bold;
-  }
+width:100%;
 
-  .coming small {
-    color: #999;
-  }
+max-width:560px;
 
-  @media (max-width: 700px) {
-    .card {
-      padding: 36px 24px;
-    }
+padding:38px;
 
-    .coming {
-      grid-template-columns: 1fr;
-      width: 100%;
-    }
+border-radius:24px;
 
-    .coming div {
-      width: auto;
-      height: 110px;
-    }
-  }
+box-shadow:0 20px 60px rgba(0,0,0,.18);
+
+text-align:center;
+
+}
+
+.logo{
+
+width:90px;
+
+margin-bottom:18px;
+
+}
+
+h1{
+
+margin:0;
+
+font-size:3rem;
+
+font-weight:700;
+
+}
+
+.subtitle{
+
+margin-top:18px;
+
+margin-bottom:30px;
+
+font-size:1.1rem;
+
+line-height:1.6;
+
+color:#666;
+
+}
+
+.btn{
+
+display:inline-flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:18px 34px;
+
+background:#166534;
+
+color:white;
+
+font-weight:700;
+
+font-size:1rem;
+
+border-radius:12px;
+
+text-decoration:none;
+
+transition:.25s;
+
+}
+
+.btn:hover{
+
+background:#15803d;
+
+transform:translateY(-2px);
+
+}
+
+.coming{
+
+margin-top:32px;
+
+display:flex;
+
+justify-content:center;
+
+gap:16px;
+
+flex-wrap:wrap;
+
+}
+
+.service{
+
+width:145px;
+
+height:120px;
+
+background:#f7f7f7;
+
+border-radius:16px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+transition:.25s;
+
+cursor:default;
+
+}
+
+.service:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 10px 25px rgba(0,0,0,.10);
+
+}
+
+.emoji{
+
+font-size:1.5rem;
+
+margin-bottom:8px;
+
+}
+
+.service span{
+
+font-weight:700;
+
+font-size:.95rem;
+
+}
+
+.service small{
+
+margin-top:6px;
+
+color:#999;
+
+font-size:.82rem;
+
+}
+
+@media(max-width:640px){
+
+.card{
+
+padding:28px;
+
+}
+
+h1{
+
+font-size:2.2rem;
+
+}
+
+.service{
+
+width:100%;
+
+max-width:260px;
+
+height:90px;
+
+}
+
+}
+
 </style>
