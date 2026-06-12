@@ -8,223 +8,157 @@ import Navbar from "../components/Navbar.astro";
   seoDescription="Acceso al ecosistema digital del Colegio Militarizado Nuevo León."
   canonicalPath="/mail"
 >
+  <Navbar />
 
-<Navbar />
-
-<main class="hero">
-
+  <main class="hero">
     <div class="card">
+      <img src="/logoCM.svg" class="logo" alt="Colegio Militarizado" />
 
-        <img src="/logoCM.svg" class="logo" alt="Colegio Militarizado"/>
+      <h1>Centro de Servicios Digitales</h1>
 
-        <h1>Centro de Servicios Digitales</h1>
+      <p>
+        Bienvenido al ecosistema tecnológico del Colegio Militarizado Nuevo León.
+      </p>
 
-        <p>
-            Bienvenido al ecosistema tecnológico del
-            Colegio Militarizado Nuevo León.
-        </p>
+      <a
+        href="https://mail.hostinger.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn"
+      >
+        📧 Acceder al Correo Institucional
+      </a>
 
-        <a
-            href="https://mail.hostinger.com"
-            target="_blank"
-            class="btn">
-
-            📧 Acceder al Correo Institucional
-
-        </a>
-
-        <div class="coming">
-
-            <div>
-
-                🤖
-
-                <span>IA LEÓN</span>
-
-                <small>Próximamente</small>
-
-            </div>
-
-            <div>
-
-                🎓
-
-                <span>Portal Académico</span>
-
-                <small>Próximamente</small>
-
-            </div>
-
-            <div>
-
-                💻
-
-                <span>Soporte Técnico</span>
-
-                <small>Próximamente</small>
-
-            </div>
-
+      <div class="coming">
+        <div>
+          <span class="icon">🤖</span>
+          <span>IA LEÓN</span>
+          <small>Próximamente</small>
         </div>
 
+        <div>
+          <span class="icon">🎓</span>
+          <span>Portal Académico</span>
+          <small>Próximamente</small>
+        </div>
+
+        <div>
+          <span class="icon">💻</span>
+          <span>Soporte Técnico</span>
+          <small>Próximamente</small>
+        </div>
+      </div>
     </div>
-
-</main>
-
+  </main>
 </Layout>
 
 <style>
-
-.hero{
-
-min-height:90vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-padding:40px;
-
-background:
-
-linear-gradient(135deg,#0f172a,#111827,#14532d);
-
-}
-
-.card{
-
-max-width:700px;
-
-background:white;
-
-padding:60px;
-
-border-radius:20px;
-
-box-shadow:0 20px 60px rgba(0,0,0,.25);
-
-text-align:center;
-
-}
-
-.logo{
-
-width:120px;
-
-margin-bottom:30px;
-
-}
-
-h1{
-
-font-size:3rem;
-
-margin-bottom:15px;
-
-}
-
-p{
-
-font-size:1.2rem;
-
-color:#666;
-
-margin-bottom:35px;
-
-}
-
-.btn{
-
-display:inline-block;
-
-background:#166534;
-
-color:white;
-
-padding:18px 40px;
-
-border-radius:10px;
-
-text-decoration:none;
-
-font-size:1.1rem;
-
-font-weight:bold;
-
-transition:.3s;
-
-}
-
-.btn:hover{
-
-transform:translateY(-2px);
-
-background:#15803d;
-
-}
-
-.coming{
-
-margin-top:50px;
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:25px;
-
-}
-
-.coming div{
-
-padding:20px;
-
-background:#f7f7f7;
-
-border-radius:10px;
-
-display:flex;
-
-flex-direction:column;
-
-gap:8px;
-
-}
-
-.coming span{
-
-font-weight:bold;
-
-}
-
-.coming small{
-
-color:#999;
-
-}
-
-@media(max-width:700px){
-
-.coming{
-
-grid-template-columns:1fr;
-
-}
-
-h1{
-
-font-size:2rem;
-
-}
-
-.card{
-
-padding:35px;
-
-}
-
-}
-
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #0f172a, #111827, #14532d);
+  }
+
+  .card {
+    width: 100%;
+    max-width: 620px;
+    background: white;
+    padding: 56px 42px;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    text-align: center;
+  }
+
+  .logo {
+    width: 120px;
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 0 0 15px;
+  }
+
+  p {
+    font-size: 1.15rem;
+    color: #666;
+    margin: 0 0 35px;
+    line-height: 1.5;
+  }
+
+  .btn {
+    display: inline-block;
+    background: #166534;
+    color: white;
+    padding: 18px 38px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: bold;
+    transition: 0.25s;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    background: #15803d;
+  }
+
+  .coming {
+    margin: 44px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    justify-content: center;
+    gap: 16px;
+    width: fit-content;
+  }
+
+  .coming div {
+    width: 150px;
+    height: 118px;
+    padding: 16px;
+    background: #f7f7f7;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 7px;
+    transition: 0.25s;
+  }
+
+  .coming div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .icon {
+    font-size: 1.35rem;
+  }
+
+  .coming span {
+    font-weight: bold;
+  }
+
+  .coming small {
+    color: #999;
+  }
+
+  @media (max-width: 700px) {
+    .card {
+      padding: 36px 24px;
+    }
+
+    .coming {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
+    .coming div {
+      width: auto;
+      height: 110px;
+    }
+  }
 </style>
