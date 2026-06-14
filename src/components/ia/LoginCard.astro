@@ -1,97 +1,102 @@
 <div class="rounded-[2rem] bg-white p-8 shadow-2xl md:p-10">
-  <div class="mb-8 text-center">
-    <img src="/logoCMWhite.svg" alt="Colegio Militarizado" class="mx-auto mb-4 h-28 w-28 rounded-full bg-[#0b3b2e] p-4" />
+    <div class="mb-8 text-center">
+      <img src="/logoCMWhite.svg" alt="Colegio Militarizado" class="mx-auto mb-4 h-28 w-28 rounded-full bg-[#0b3b2e] p-4" />
 
-    <h2 class="text-3xl font-black text-[#1f2933]">
-      Acceso docentes
-    </h2>
+      <h2 class="text-3xl font-black text-[#1f2933]">
+        Acceso docentes
+      </h2>
 
-    <p class="mt-2 text-gray-600">
-      Ingresa con tu correo institucional.
-    </p>
-  </div>
-
-  <form id="loginForm" class="space-y-5">
-    <div>
-      <label class="mb-2 block text-sm font-bold text-gray-700">
-        Correo institucional
-      </label>
-      <input
-        id="email"
-        type="email"
-        required
-        placeholder="usuario@colegiomilitarizadonl.com"
-        class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-[#0b3b2e]"
-      />
+      <p class="mt-2 text-gray-600">
+        Ingresa con tu correo institucional.
+      </p>
     </div>
 
-    <div>
-      <label class="mb-2 block text-sm font-bold text-gray-700">
-        Contraseña
-      </label>
-      <input
-        id="password"
-        type="password"
-        required
-        placeholder="Contraseña"
-        class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-[#0b3b2e]"
-      />
+    <form id="loginForm" class="space-y-5">
+      <div>
+        <label class="mb-2 block text-sm font-bold text-gray-700">
+          Correo institucional
+        </label>
+        <input
+          id="email"
+          type="email"
+          required
+          placeholder="usuario@colegiomilitarizadonl.com"
+          class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-[#0b3b2e]"
+        />
+      </div>
+
+      <div>
+        <label class="mb-2 block text-sm font-bold text-gray-700">
+          Contraseña
+        </label>
+        <input
+          id="password"
+          type="password"
+          required
+          placeholder="Contraseña"
+          class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-[#0b3b2e]"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full rounded-xl bg-[#0b3b2e] px-6 py-4 font-black text-white transition hover:bg-[#06281f]"
+      >
+        Entrar a IA LEÓN
+      </button>
+
+      <p id="loginError" class="text-center text-sm font-semibold text-red-700"></p>
+    </form>
+
+    <div class="mt-6 text-center text-sm text-gray-500">
+      Uso exclusivo del personal autorizado.
     </div>
-
-    <button
-      type="submit"
-      class="w-full rounded-xl bg-[#0b3b2e] px-6 py-4 font-black text-white transition hover:bg-[#06281f]"
-    >
-      Entrar a IA LEÓN
-    </button>
-
-    <p id="loginError" class="text-center text-sm font-semibold text-red-700"></p>
-  </form>
-
-  <div class="mt-6 text-center text-sm text-gray-500">
-    Uso exclusivo del personal autorizado.
   </div>
-</div>
 
-<script>
-  const API_URL = import.meta.env.PUBLIC_IA_LEON_API_URL;
+  <script>
+    const API_URL = import.meta.env.PUBLIC_IA_LEON_API_URL;
 
-  const loginForm = document.getElementById("loginForm");
-  const loginError = document.getElementById("loginError");
+    const loginForm = document.getElementById("loginForm");
+    const loginError = document.getElementById("loginError");
 
-  loginForm?.addEventListener("submit", async (event) => {
-    event.preventDefault();
+    loginForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
 
-    loginError.textContent = "";
+      loginError.textContent = "";
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    try {
-      const response = await fetch(`${API_URL}/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, password })
-      });
-
-      if (!response.ok) {
-        throw new Error("Correo o contraseña incorrectos.");
-      }
-
-      const session = await response.json();
-
-      localStorage.setItem("ia_leon_session", JSON.stringify(session));
-
-      if (session.user?.must_change_password) {
-        window.location.href = "/ia-leon/cambiar-password";
+      if (!API_URL) {
+        loginError.textContent = "Falta configurar PUBLIC_IA_LEON_API_URL.";
         return;
       }
 
-      window.location.href = "/ia-leon/chat";
-    } catch (error) {
-      loginError.textContent = error.message || "No se pudo iniciar sesión.";
-    }
-  });
-</script>
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const response = await fetch(`${API_URL}/auth/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ email, password })
+        });
+
+        if (!response.ok) {
+          throw new Error("Correo o contraseña incorrectos.");
+        }
+
+        const session = await response.json();
+
+        localStorage.setItem("ia_leon_session", JSON.stringify(session));
+
+        if (session.must_change_password) {
+          window.location.href = "/ia-leon/cambiar-password";
+          return;
+        }
+
+        window.location.href = "/ia-leon/chat";
+      } catch (error) {
+        loginError.textContent = error.message || "No se pudo iniciar sesión.";
+      }
+    });
+  </script>
