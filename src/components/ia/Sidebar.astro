@@ -1,0 +1,49 @@
+<aside class="hidden w-72 shrink-0 border-r border-white/10 bg-[#0b3b2e] text-white lg:flex lg:flex-col">
+  <div class="p-6">
+    <a href="/ia-leon/chat" class="flex items-center gap-3">
+      <img src="/logoCMWhite.svg" alt="Colegio Militarizado" class="h-14 w-14" />
+      <div>
+        <p class="text-xl font-black leading-none">IA LEÓN</p>
+        <p class="text-xs text-white/70">Asistente Docente</p>
+      </div>
+    </a>
+  </div>
+
+  <nav class="flex-1 space-y-2 px-4">
+    <a href="/ia-leon/chat" class="block rounded-xl px-4 py-3 font-bold text-white hover:bg-white/10">
+      Nuevo chat
+    </a>
+
+    <a href="/ia-leon/perfil" class="block rounded-xl px-4 py-3 font-bold text-white/80 hover:bg-white/10 hover:text-white">
+      Mi perfil
+    </a>
+
+    <a href="/ia-leon/cambiar-password" class="block rounded-xl px-4 py-3 font-bold text-white/80 hover:bg-white/10 hover:text-white">
+      Cambiar contraseña
+    </a>
+  </nav>
+
+  <div class="border-t border-white/10 p-4">
+    <button
+      id="sidebarLogout"
+      class="w-full rounded-xl bg-white/10 px-4 py-3 text-left font-bold text-white hover:bg-white/20"
+    >
+      Cerrar sesión
+    </button>
+  </div>
+</aside>
+
+<div class="fixed bottom-4 left-4 z-50 lg:hidden">
+  <a href="/ia-leon/chat" class="rounded-full bg-[#0b3b2e] px-5 py-3 font-black text-white shadow-xl">
+    IA LEÓN
+  </a>
+</div>
+
+<script>
+  const sidebarLogout = document.getElementById("sidebarLogout");
+
+  sidebarLogout?.addEventListener("click", () => {
+    localStorage.removeItem("ia_leon_session");
+    window.location.href = "/ia-leon";
+  });
+</script>

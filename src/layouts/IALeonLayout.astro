@@ -1,0 +1,26 @@
+---
+import Layout from "./Layout.astro";
+import Sidebar from "../components/ia/Sidebar.astro";
+
+interface Props {
+  seoTitle?: string;
+  seoDescription?: string;
+}
+
+const {
+  seoTitle = "IA LEÓN | Colegio Militarizado",
+  seoDescription = "Plataforma institucional IA LEÓN para docentes del Colegio Militarizado Nuevo León.",
+} = Astro.props as Props;
+---
+
+<Layout seoTitle={seoTitle} seoDescription={seoDescription} noindex={true}>
+  <main class="min-h-screen bg-[#f5f1e8]">
+    <div class="flex min-h-screen">
+      <Sidebar />
+
+      <section class="flex min-h-screen flex-1 flex-col">
+        <slot />
+      </section>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,47 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import LoginCard from "../../components/ia/LoginCard.astro";
+---
+
+<Layout
+  seoTitle="IA LEÓN | Colegio Militarizado"
+  seoDescription="Acceso institucional a IA LEÓN para personal del Colegio Militarizado Nuevo León."
+  canonicalPath="/ia-leon"
+>
+  <Navbar />
+
+  <main class="min-h-screen bg-[#f5f1e8] px-6 pt-32 pb-16">
+    <section class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
+      <div>
+        <p class="mb-4 text-sm font-black uppercase tracking-[0.3em] text-[#0b3b2e]">
+          Plataforma institucional
+        </p>
+
+        <h1 class="text-5xl font-black leading-tight text-[#1f2933] md:text-7xl">
+          IA LEÓN
+        </h1>
+
+        <p class="mt-6 max-w-xl text-xl text-gray-700">
+          Asistente inteligente para docentes y personal autorizado del Colegio Militarizado Nuevo León.
+        </p>
+
+        <div class="mt-8 grid gap-4 text-gray-700">
+          <div class="rounded-2xl bg-white p-5 shadow-sm">
+            Consulta calificaciones, procesos académicos y documentos internos.
+          </div>
+
+          <div class="rounded-2xl bg-white p-5 shadow-sm">
+            Acceso protegido con correo institucional.
+          </div>
+
+          <div class="rounded-2xl bg-white p-5 shadow-sm">
+            Respuestas breves, seguras y basadas en información autorizada.
+          </div>
+        </div>
+      </div>
+
+      <LoginCard />
+    </section>
+  </main>
+</Layout>

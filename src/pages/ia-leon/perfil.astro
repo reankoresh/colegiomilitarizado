@@ -1,0 +1,78 @@
+---
+import IALeonLayout from "../../layouts/IALeonLayout.astro";
+---
+
+<IALeonLayout
+  seoTitle="Perfil IA LEÓN | Colegio Militarizado"
+  seoDescription="Perfil del usuario institucional IA LEÓN."
+>
+  <section class="flex min-h-screen items-center justify-center px-6 py-12">
+    <div class="w-full max-w-2xl rounded-[2rem] bg-white p-8 shadow-xl md:p-10">
+      <h1 class="mb-2 text-4xl font-black text-[#1f2933]">Mi perfil</h1>
+      <p class="mb-8 text-gray-600">
+        Información de contexto usada por IA LEÓN.
+      </p>
+
+      <div class="space-y-4">
+        <div class="rounded-2xl bg-[#f5f1e8] p-5">
+          <p class="text-sm font-bold text-gray-500">Nombre</p>
+          <p id="profileName" class="text-lg font-black text-[#1f2933]">—</p>
+        </div>
+
+        <div class="rounded-2xl bg-[#f5f1e8] p-5">
+          <p class="text-sm font-bold text-gray-500">Correo</p>
+          <p id="profileEmail" class="text-lg font-black text-[#1f2933]">—</p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="rounded-2xl bg-[#f5f1e8] p-5">
+            <p class="text-sm font-bold text-gray-500">Rol</p>
+            <p id="profileRole" class="text-lg font-black text-[#1f2933]">—</p>
+          </div>
+
+          <div class="rounded-2xl bg-[#f5f1e8] p-5">
+            <p class="text-sm font-bold text-gray-500">Plantel</p>
+            <p id="profileCampus" class="text-lg font-black text-[#1f2933]">—</p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-[#f5f1e8] p-5">
+          <p class="text-sm font-bold text-gray-500">Área</p>
+          <p id="profileArea" class="text-lg font-black text-[#1f2933]">—</p>
+        </div>
+      </div>
+
+      <div class="mt-8 flex flex-col gap-3 md:flex-row">
+        <a
+          href="/ia-leon/chat"
+          class="flex-1 rounded-xl bg-[#0b3b2e] px-6 py-4 text-center font-black text-white"
+        >
+          Volver al chat
+        </a>
+
+        <a
+          href="/ia-leon/cambiar-password"
+          class="flex-1 rounded-xl bg-[#1f2933] px-6 py-4 text-center font-black text-white"
+        >
+          Cambiar contraseña
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const session = JSON.parse(localStorage.getItem("ia_leon_session") || "null");
+
+    if (!session?.token) {
+      window.location.href = "/ia-leon";
+    }
+
+    const user = session?.user || {};
+
+    document.getElementById("profileName").textContent = user.name || "—";
+    document.getElementById("profileEmail").textContent = user.email || "—";
+    document.getElementById("profileRole").textContent = user.role || "—";
+    document.getElementById("profileCampus").textContent = user.campus || "—";
+    document.getElementById("profileArea").textContent = user.area || "—";
+  </script>
+</IALeonLayout>
