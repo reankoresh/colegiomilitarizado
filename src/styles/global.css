@@ -101,3 +101,15 @@ p {
   line-height: 1.5rem; /* leading-6 */
   font-weight: 400; /* font-normal */
 }
+
+/* Ocultar branding de Chat2Desk */
+.messages__footer,
+.messages__footer--light {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
